@@ -1,3 +1,3 @@
 function makeBlue(){
-  document.getElementById("testText").style.color=blue;
+  document.getElementById("testText")..innerHTML="different Text";
 }
