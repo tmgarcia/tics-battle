@@ -3,16 +3,16 @@
 		<script type="text/javascript" src="baseMethods.js"></script>
 	</head>
 	<body>
-		<form id="playerForm">
-			Name:<input type="text" name="name" />
+		<div id="playerForm">
+			Name:<input type="text" name="name" id ="nameInput" />
 			<input type="button" onclick = "sendID()" value="Submit" />
-		</form>
+		</div>
 		
 		<div id="myDiv"> 
 		</div>
 		<script>
 		function sendID(text){
-			var name = document.forms["playerForm"]["name"].value;
+			var name = document.getElementById("nameInput").value;
 			createGame(name);
 
 		}
