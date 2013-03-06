@@ -1,23 +1,18 @@
 var playerID;
 var gameID;
 
-
-function createGame(name)
+//Takes in player-input name, formats it as required xml and sends it to the server as the PlayerID
+//Returns the server's response, the gameID, as an XML
+//Currently displays this response in the div with id "myDiv" - what is done with this will change when
+//Actual Create Game html page is created
+function createPVPGame(name)
 {
-  var x = sendXML(sendPlayerID(name), "NewGame");
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame, false);
+	xmlhttp.send("<request><playerID>" + name + "</playerID></request>");
+ 	var x = xmlhttp.responseXML;
 
 	displayInfo(getXMLValue(x, "gameID"), "myDiv") ;
-}
-
-//Constructs the proper xml structure for the Create Game request
-//around !!String!! ["name"] as one long string [txt] which is returned.
-//This is used as request text to send to server
-function sendPlayerID(name)
-{
-	txt="<request>";
-	txt=txt+"<playerID>"+ name + "</playerID>";
-	txt=txt+"</request>";
-	return txt;
 }
 
 //Display !!String!! info at !!String!! id
