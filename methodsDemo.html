@@ -1,0 +1,21 @@
+<html>
+  <head>
+		<script type="text/javascript" src="baseMethods.js"></script>
+	</head>
+	<body>
+		<form id="playerForm">
+			Name:<input type="text" name="name" />
+			<input type="button" onclick = "sendID()" value="Submit" />
+		</form>
+		
+		<div id="myDiv"> 
+		</div>
+		<script>
+		function sendID(text){
+			var name = document.forms["playerForm"]["name"].value;
+			createGame(name);
+
+		}
+		</script>
+	</body>
+</html>
