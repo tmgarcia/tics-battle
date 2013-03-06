@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script type="text/javascript" src="baseMethods.js"></script>
+  </head>
+  <body>
+    <h1>New PVP Game</h1>
+
+    <div id="playerForm">
+      Create a Player ID:<input type="text" name="name" id ="nameInput" /> (a Nickname/username/etc)
+      <br />
+      <input type="button" onclick = "sendID()" value="Submit" />
+    </div>
+    
+    <h3>Game ID</h3>
+    <div id="myDiv">
+    </div>
+
+    <script>
+    function sendID(text){
+    var name = document.getElementById("nameInput").value;
+    createPVPGame(name);
+    
+    }
+    </script>
+  </body>
+</html>
