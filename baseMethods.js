@@ -43,3 +43,11 @@ function getXMLValue(xmlDoc, valueName)
 	return xmlDoc.getElementsByTagName(valueName)[0].childNodes[0].nodeValue;
 	
 }
+
+//Fires at the specified coordinates at method call
+function fire(coordinates) {
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Fire", false);
+	xmlhttp.send("<request><coordinates>" + coordinates + "</coordinates></request>");
+	return xmlhttp.responseXML;
+}
