@@ -1,5 +1,87 @@
+#title{
+	font-size:40px;
+	text-align:center;
+}
+
+#playerGrid{
+	float:right;
+	margin-right:500px;
+}
+
+.selectCell{
+	width:50px;
+	height:50px;
+	background-color:#00F;
+	transition: background-color 2s;
+	-moz-transition: background-color 2s; /* Firefox 4 */
+	-webkit-transition: background-color 2s; /* Safari and Chrome */
+	-o-transition: background-color 2s; /* Opera */
+}
+
+.selectCell:hover{
+	background-color:#AAF;
+}
+
+#ships{
+	float:left;
+	margin-left:600px;
+}
+
+#innertext{
+	font-weight:bold;
+	font-size:15px;
+	transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+}
+
+.unsetcarrier{
+	background-color:orange;
+	clear:right;
+	float:left;
+	width:50px;
+	height:250px;
+	margin-bottom:20px;
+}
+.unsetbattleship{
+	background-color:red;
+	width:50px;
+	height:200px;
+	float:left;
+	clear:right;
+}
+.unsetsubmarine{
+	background-color:purple;
+	width:50px;
+	height:150px;
+	float:left;
+	margin-bottom:0;
+	padding:0;
+	margin-right:20px;
+}
+.unsetcruiser{
+	clear:left;
+	float:left;
+	background-color:pink;
+	width:50px;
+	height:150px;
+	margin-right:20px;
+}
+.unsetpatrolBoat{
+	background-color:green;
+	width:50px;
+	height:100px;
+	float:left;
+	clear:both;
+}
+
+
+/*Code for Game play */
+
 #turnIndicator{
-  text-align:center;
+	text-align:center;
 	font-size:50px;
 }
 
