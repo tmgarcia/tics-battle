@@ -1,0 +1,17 @@
+<html>
+  <head>
+      <script type="text/javascript" src="baseMethods.js"></script>
+  </head>
+  <body>
+      <h1>Welcome to BattleShip</h1>
+      <h2><a onclick="showOptions()">Create Game</a></h2>
+      <div id="createOptions"></div>
+      <h2>Join Game</h2>
+      <script>
+        function showOptions(){
+  	        var links = "<h3><a href = \"createPVP.html\">New PVP Game</a></h3><h3><a href = \"createAI.html\">New AI Game</a></h3>";
+            document.getElementById("createOptions").innerHTML= links;
+        }
+      </script>
+  </body>
+</html>

@@ -8,11 +8,11 @@ var gameID;
 function createPVPGame(name)
 {
 	xmlhttp=new XMLHttpRequest();
-	xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame, false);
+	xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame", false);
 	xmlhttp.send("<request><playerID>" + name + "</playerID></request>");
  	var x = xmlhttp.responseXML;
 
-	displayInfo(getXMLValue(x, "gameID"), "myDiv") ;
+	displayInfo(getXMLValue(xmlhttp.responseXML, "gameID"), "myDiv") ;
 }
 
 //Display !!String!! info at !!String!! id

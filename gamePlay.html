@@ -1,0 +1,217 @@
+<html>
+  <head>
+    <script type="text/javascript" src="methods.js"></script>
+  <link rel="stylesheet" type="text/css" href="baseCSS.css"/>
+  </head>
+  <body>
+	<div id="turnIndicator">Your Turn</div>
+	<div id="playerShips">
+		<h1>Your Ships</h1>
+		<table id="playerGrid">
+			<tr>
+				<th></th>
+				<th>A</th>
+				<th>B</th>
+				<th>C</th>
+				<th>D</th>
+				<th>E</th>
+				<th>F</th>
+				<th>G</th>
+				<th>H</th>
+			</tr>
+			<tr id="1">
+				<td>1</td>
+				<td id="A1"></td>
+				<td id="B1"></td>
+				<td id="C1"></td>
+				<td id="D1"></td>
+				<td id="E1"></td>
+				<td id="F1"></td>
+				<td id="G1"></td>
+				<td id="H1"></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td id="A2"></td>
+				<td id="B2"></td>
+				<td id="C2"></td>
+				<td id="D2"></td>
+				<td id="E2"></td>
+				<td id="F2"></td>
+				<td id="G2"></td>
+				<td id="H2"></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td id="A3"></td>
+				<td id="B3"></td>
+				<td id="C3"></td>
+				<td id="D3"></td>
+				<td id="E3"></td>
+				<td id="F3"></td>
+				<td id="G3"></td>
+				<td id="H3"></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td id="A4"></td>
+				<td id="B4"></td>
+				<td id="C4"></td>
+				<td id="D4"></td>
+				<td id="E4"></td>
+				<td id="F4"></td>
+				<td id="G4"></td>
+				<td id="H4"></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td id="A5"></td>
+				<td id="B5"></td>
+				<td id="C5"></td>
+				<td id="D5"></td>
+				<td id="E5"></td>
+				<td id="F5"></td>
+				<td id="G5"></td>
+				<td id="H5"></td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td id="A6"></td>
+				<td id="B6"></td>
+				<td id="C6"></td>
+				<td id="D6"></td>
+				<td id="E6"></td>
+				<td id="F6"></td>
+				<td id="G6"></td>
+				<td id="H6"></td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td id="A7"></td>
+				<td id="B7"></td>
+				<td id="C7"></td>
+				<td id="D7"></td>
+				<td id="E7"></td>
+				<td id="F7"></td>
+				<td id="G7"></td>
+				<td id="H7"></td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td id="A8"></td>
+				<td id="B8"></td>
+				<td id="C8"></td>
+				<td id="D8"></td>
+				<td id="E8"></td>
+				<td id="F8"></td>
+				<td id="G8"></td>
+				<td id="H8"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="enemyShips">
+		<h1>Enemy Waters</h1>
+		<table id="enemyGrid">
+			<tr>
+				<th></th>
+				<th>A</th>
+				<th>B</th>
+				<th>C</th>
+				<th>D</th>
+				<th>E</th>
+				<th>F</th>
+				<th>G</th>
+				<th>H</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td id="A1"><button class ="fireButtonMiss" type="button" onclick="fire(A1)"></button></td>
+				<td id="B1"><button class ="fireButtonHit" type="button" onclick="fire(B1)"></button></td>
+				<td id="C1"><button class ="fireButtonDead" type="button" onclick="fire(C1)"></button></td>
+				<td id="D1"><button class ="fireButton" type="button" onclick="fire(D1)"></button></td>
+				<td id="E1"><button class ="fireButton" type="button" onclick="fire(E1)"></button></td>
+				<td id="F1"><button class ="fireButton" type="button" onclick="fire(F1)"></button></td>
+				<td id="G1"><button class ="fireButton" type="button" onclick="fire(G1)"></button></td>
+				<td id="H1"><button class ="fireButton" type="button" onclick="fire(H1)"></button></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td id="A2"><button class ="fireButton" type="button" onclick="fire(A2)"></button></td>
+				<td id="B2"><button class ="fireButton" type="button" onclick="fire(B2)"></button></td>
+				<td id="C2"><button class ="fireButton" type="button" onclick="fire(C2)"></button></td>
+				<td id="D2"><button class ="fireButton" type="button" onclick="fire(D2)"></button></td>
+				<td id="E2"><button class ="fireButton" type="button" onclick="fire(E2)"></button></td>
+				<td id="F2"><button class ="fireButton" type="button" onclick="fire(F2)"></button></td>
+				<td id="G2"><button class ="fireButton" type="button" onclick="fire(G2)"></button></td>
+				<td id="H2"><button class ="fireButton" type="button" onclick="fire(H2)"></button></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td id="A3"><button class ="fireButton" type="button" onclick="fire(A3)"></button></td>
+				<td id="B3"><button class ="fireButton" type="button" onclick="fire(B3)"></button></td>
+				<td id="C3"><button class ="fireButton" type="button" onclick="fire(C3)"></button></td>
+				<td id="D3"><button class ="fireButton" type="button" onclick="fire(D3)"></button></td>
+				<td id="E3"><button class ="fireButton" type="button" onclick="fire(E3)"></button></td>
+				<td id="F3"><button class ="fireButton" type="button" onclick="fire(F3)"></button></td>
+				<td id="G3"><button class ="fireButton" type="button" onclick="fire(G3)"></button></td>
+				<td id="H3"><button class ="fireButton" type="button" onclick="fire(H3)"></button></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td id="A4"><button class ="fireButton" type="button" onclick="fire(A4)"></button></td>
+				<td id="B4"><button class ="fireButton" type="button" onclick="fire(B4)"></button></td>
+				<td id="C4"><button class ="fireButton" type="button" onclick="fire(C4)"></button></td>
+				<td id="D4"><button class ="fireButton" type="button" onclick="fire(D4)"></button></td>
+				<td id="E4"><button class ="fireButton" type="button" onclick="fire(E4)"></button></td>
+				<td id="F4"><button class ="fireButton" type="button" onclick="fire(F4)"></button></td>
+				<td id="G4"><button class ="fireButton" type="button" onclick="fire(G4)"></button></td>
+				<td id="H4"><button class ="fireButton" type="button" onclick="fire(H4)"></button></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td id="A5"><button class ="fireButton" type="button" onclick="fire(A5)"></button></td>
+				<td id="B5"><button class ="fireButton" type="button" onclick="fire(B5)"></button></td>
+				<td id="C5"><button class ="fireButton" type="button" onclick="fire(C5)"></button></td>
+				<td id="D5"><button class ="fireButton" type="button" onclick="fire(D5)"></button></td>
+				<td id="E5"><button class ="fireButton" type="button" onclick="fire(E5)"></button></td>
+				<td id="F5"><button class ="fireButton" type="button" onclick="fire(F5)"></button></td>
+				<td id="G5"><button class ="fireButton" type="button" onclick="fire(G5)"></button></td>
+				<td id="H5"><button class ="fireButton" type="button" onclick="fire(H5)"></button></td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td id="A6"><button class ="fireButton" type="button" onclick="fire(A6)"></button></td>
+				<td id="B6"><button class ="fireButton" type="button" onclick="fire(B6)"></button></td>
+				<td id="C6"><button class ="fireButton" type="button" onclick="fire(C6)"></button></td>
+				<td id="D6"><button class ="fireButton" type="button" onclick="fire(D6)"></button></td>
+				<td id="E6"><button class ="fireButton" type="button" onclick="fire(E6)"></button></td>
+				<td id="F6"><button class ="fireButton" type="button" onclick="fire(F6)"></button></td>
+				<td id="G6"><button class ="fireButton" type="button" onclick="fire(G6)"></button></td>
+				<td id="H6"><button class ="fireButton" type="button" onclick="fire(H6)"></button></td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td id="A7"><button class ="fireButton" type="button" onclick="fire(A7)"></button></td>
+				<td id="B7"><button class ="fireButton" type="button" onclick="fire(B7)"></button></td>
+				<td id="C7"><button class ="fireButton" type="button" onclick="fire(C7)"></button></td>
+				<td id="D7"><button class ="fireButton" type="button" onclick="fire(D7)"></button></td>
+				<td id="E7"><button class ="fireButton" type="button" onclick="fire(E7)"></button></td>
+				<td id="F7"><button class ="fireButton" type="button" onclick="fire(F7)"></button></td>
+				<td id="G7"><button class ="fireButton" type="button" onclick="fire(G7)"></button></td>
+				<td id="H7"><button class ="fireButton" type="button" onclick="fire(H7)"></button></td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td id="A8"><button class ="fireButton" type="button" onclick="fire(A8)"></button></td>
+				<td id="B8"><button class ="fireButton" type="button" onclick="fire(B8)"></button></td>
+				<td id="C8"><button class ="fireButton" type="button" onclick="fire(C8)"></button></td>
+				<td id="D8"><button class ="fireButton" type="button" onclick="fire(D8)"></button></td>
+				<td id="E8"><button class ="fireButton" type="button" onclick="fire(E8)"></button></td>
+				<td id="F8"><button class ="fireButton" type="button" onclick="fire(F8)"></button></td>
+				<td id="G8"><button class ="fireButton" type="button" onclick="fire(G8)"></button></td>
+				<td id="H8"><button class ="fireButton" type="button" onclick="fire(H8)"></button></td>
+			</tr>
+		</table>
+	</div>
+  </body>
+</html>
