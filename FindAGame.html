@@ -1,0 +1,19 @@
+<html>
+  <head>
+		<title>Find a Battleship Game</title>
+		<script type="text/javascript" src="FindAGameJS.js"></script>
+	</head>
+	
+	<body>
+		<div id="playerForm">
+			<h1>Join an active PVP game</h1>
+			<br />
+			Create your Player ID: <input type="text" name="playerName" id ="yourID" />
+			<br />
+			<input type = "button" onclick = "sendID(document.getElementById('yourID').value)"  value="Submit" />
+		</div>
+		
+		<div id="table">
+		</div>		
+	</body>
+</html>
