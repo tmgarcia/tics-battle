@@ -61,4 +61,5 @@ function joinGame(clicked_ID)
 	b = b + "</li></ul>";
 	
 	document.getElementById("table").innerHTML = b;
+	window.setTimeout(window.open('PlaceShips.html','_self','','true'), 10000);
 }
