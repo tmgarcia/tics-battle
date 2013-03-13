@@ -11,9 +11,17 @@ function createPVPGame(name)
 	xmlhttp.withCredentials=true;
 	xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame", false);
 	xmlhttp.send("<request><playerID>" + name + "</playerID></request>");
-	  var x = xmlhttp.responseXML;
-
-	displayInfo(getXMLValue(xmlhttp.responseXML, "gameID"), "myDiv") ;
+	
+	if(xmlhttp.responseText.indexOf("request must include")!= -1){
+			alert("You must input a Player ID");
+	}
+	else if(xmlhttp.responseText.indexOf("error")!= -1){
+			alert("Something is wrong...");
+	}
+	else{
+		displayInfo(getXMLValue(xmlhttp.responseXML, "gameID"), "myDiv") ;
+		window.setTimeout(window.open('PlaceShips.html','_self','','true'), 10000);
+		}
 }
 
 //Display !!String!! info at !!String!! id
@@ -148,24 +156,96 @@ function placeShip(){
 		displayInfo("The ship is too big for that direction.", "displayConfirm");
 	}
 	else{
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.withCredentials=true;
-	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/PlaceShip", false);
-	xmlhttp.send("<request><coordinates>" + c + "</coordinates><direction>" + d + "</direction><ship>" + s + "</ship></request>");
-	var xmlDoc = xmlhttp.responseXML;
+		xmlhttp = new XMLHttpRequest();
+		xmlhttp.withCredentials=true;
+		xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/PlaceShip", false);
+		xmlhttp.send("<request><coordinates>" + c + "</coordinates><direction>" + d + "</direction><ship>" + s + "</ship></request>");
+		var xmlDoc = xmlhttp.responseXML;
 
-	if(checksOut(xmlhttp.responseText)){
-		displayInfo(getXMLValue(xmlhttp.responseXML, "result"), "displayConfirm") ;
-		displayShip(s, d, c);
-		document.getElementById("unset" + s).disabled = true;
-		resetDirections()
-		s = undefined;
-		d = undefined;
-		c = undefined;
-	}
+		if(checksOut(xmlhttp.responseText)){
+			displayInfo(getXMLValue(xmlhttp.responseXML, "result"), "displayConfirm") ;
+			displayShip(s, d, c);
+			storeCoordinates(s, c, d);
+			document.getElementById("unset" + s).disabled = true;
+			resetDirections()
+			s = undefined;
+			d = undefined;
+			c = undefined;
+		}
+		if(everyShipSet()){
+			window.open('gamePlay.html','_self','','true')
+		}
 	}
 }
 
+function everyShipSet(){
+	if((document.getElementById("unsetSubmarine").disabled == true) && (document.getElementById("unsetCarrier").disabled == true) && (document.getElementById("unsetCruiser").disabled == true) && (document.getElementById("unsetBattleship").disabled == true) && (document.getElementById("unsetPatrolBoat").disabled == true))
+		return true;
+	else
+		return false;
+}
+
+function storeCoordinates(ship_name, ship_coordinates, ship_direction){
+	sessionStorage.setItem(ship_name + 'c', ship_coordinates);
+	sessionStorage.setItem(ship_name + 'd', ship_direction);
+}
+
+function addShips(){
+	displayShip2("Carrier", sessionStorage.getItem("Carrierd"), sessionStorage.getItem("Carrierc"));
+	displayShip2("Battleship", sessionStorage.getItem("Battleshipd"), sessionStorage.getItem("Battleshipc"));
+	displayShip2("Submarine", sessionStorage.getItem("Submarined"), sessionStorage.getItem("Submarinec"));
+	displayShip2("Cruiser", sessionStorage.getItem("Cruiserd"), sessionStorage.getItem("Cruiserc"));
+	displayShip2("PatrolBoat", sessionStorage.getItem("PatrolBoatd"), sessionStorage.getItem("PatrolBoatc"));
+}
+
+
+function displayShip2(ship, dir, cell){
+	var numcells;
+	var shipcolor;
+	
+	switch(ship){
+		case "Carrier":
+			numcells=5;
+			shipcolor= 'orange';
+		break;
+		case "Battleship":
+			numcells=4;
+			shipcolor= 'red';
+		break;
+		case "Submarine":
+			numcells=3;
+			shipcolor= 'purple';
+		break;
+		case "Cruiser":
+			numcells=3;
+			shipcolor= 'pink';
+		break;
+		case "PatrolBoat":
+			numcells=2;
+			shipcolor= 'green';
+		break;
+	}
+	if(dir=="DOWN"){
+		for(var i = cell[1]; i<((parseInt(cell[1],10))+numcells); i++){
+			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
+		}
+	}
+	if(dir=="UP"){
+		for(var i = cell[1]; i>((parseInt(cell[1],10))-numcells); i--){
+			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
+		}
+	}
+	if(dir=="LEFT"){
+		for(var i = cell[0]; i.charCodeAt()>(cell[0].charCodeAt() - numcells); i = String.fromCharCode(i.charCodeAt() - 1)){
+			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
+		}
+	}
+	if(dir=="RIGHT"){
+		for(var i = cell[0]; i.charCodeAt()<(cell[0].charCodeAt() + numcells); i = String.fromCharCode(i.charCodeAt() + 1)){
+			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
+		}
+	}
+}
 
 function displayShip(ship, dir, cell){
 	var numcells;

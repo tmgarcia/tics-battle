@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="methods.js"></script>
+    <script type="text/javascript" src="baseMethods.js"></script>
   <link rel="stylesheet" type="text/css" href="baseCSS.css"/>
   </head>
-  <body>
+  <body onload="fix()">
 	<div id="turnIndicator">Your Turn</div>
 	<div id="playerShips">
 		<h1>Your Ships</h1>
@@ -213,5 +214,10 @@
 			</tr>
 		</table>
 	</div>
+	<script>
+		function fix(){
+			addShips();
+		}
+	</script>
   </body>
 </html>
