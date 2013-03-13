@@ -1,10 +1,7 @@
 var playerID;
 var gameID;
 
-//Takes in player-input name, formats it as required xml and sends it to the server as the PlayerID
-//Returns the server's response, the gameID, as an XML
-//Currently displays this response in the div with id "myDiv" - what is done with this will change when
-//Actual Create Game html page is created
+/*---------Create Game Methods----------*/
 function createPVPGame(name)
 {
 	xmlhttp=new XMLHttpRequest();
@@ -23,16 +20,10 @@ function createPVPGame(name)
 		window.setTimeout(window.open('PlaceShips.html','_self','','true'), 3000);
 		}
 }
-
-//Display !!String!! info at !!String!! id
 function displayInfo(info, id)
 {
 document.getElementById(id).innerHTML=info;
 }
-
-//Sends specific !!String!! [requesttxt] to the server using request keywords !!String!! [type]
-//ie the [playerid] as a string to [NewGame]
-//Returns the server's response as an XML document
 function sendXML(requesttxt, type)
 {
 xmlhttp=new XMLHttpRequest();
@@ -40,15 +31,67 @@ xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/"+
 xmlhttp.send(requesttxt);
 return xmlhttp.responseXML;
 }
-
-//Returns an XML document [xmlDoc]'s value at String [valueName]
 function getXMLValue(xmlDoc, valueName)
 {
 return xmlDoc.getElementsByTagName(valueName)[0].firstChild.nodeValue;
 
 }
 
-//Fires at the specified coordinates at method call
+/*-----------Game Play Methods--------*/
+function addShips(){
+	displayShip2("Carrier", sessionStorage.getItem("Carrierd"), sessionStorage.getItem("Carrierc"));
+	displayShip2("Battleship", sessionStorage.getItem("Battleshipd"), sessionStorage.getItem("Battleshipc"));
+	displayShip2("Submarine", sessionStorage.getItem("Submarined"), sessionStorage.getItem("Submarinec"));
+	displayShip2("Cruiser", sessionStorage.getItem("Cruiserd"), sessionStorage.getItem("Cruiserc"));
+	displayShip2("PatrolBoat", sessionStorage.getItem("PatrolBoatd"), sessionStorage.getItem("PatrolBoatc"));
+}
+function displayShip2(ship, dir, cell){
+	var numcells;
+	var shipcolor;
+	
+	switch(ship){
+		case "Carrier":
+			numcells=5;
+			shipcolor= 'orange';
+		break;
+		case "Battleship":
+			numcells=4;
+			shipcolor= 'red';
+		break;
+		case "Submarine":
+			numcells=3;
+			shipcolor= 'purple';
+		break;
+		case "Cruiser":
+			numcells=3;
+			shipcolor= 'pink';
+		break;
+		case "PatrolBoat":
+			numcells=2;
+			shipcolor= 'green';
+		break;
+	}
+	if(dir=="DOWN"){
+		for(var i = cell[1]; i<((parseInt(cell[1],10))+numcells); i++){
+			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
+		}
+	}
+	if(dir=="UP"){
+		for(var i = cell[1]; i>((parseInt(cell[1],10))-numcells); i--){
+			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
+		}
+	}
+	if(dir=="LEFT"){
+		for(var i = cell[0]; i.charCodeAt()>(cell[0].charCodeAt() - numcells); i = String.fromCharCode(i.charCodeAt() - 1)){
+			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
+		}
+	}
+	if(dir=="RIGHT"){
+		for(var i = cell[0]; i.charCodeAt()<(cell[0].charCodeAt() + numcells); i = String.fromCharCode(i.charCodeAt() + 1)){
+			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
+		}
+	}
+}
 function fire(coordinates) {
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Fire", false);
@@ -57,7 +100,7 @@ function fire(coordinates) {
 }
 
 
-/* Place ship methods*/
+/*---------Place ship methods---------*/
 
 var s; //ship
 var c; //coordinate
@@ -188,63 +231,6 @@ function everyShipSet(){
 function storeCoordinates(ship_name, ship_coordinates, ship_direction){
 	sessionStorage.setItem(ship_name + 'c', ship_coordinates);
 	sessionStorage.setItem(ship_name + 'd', ship_direction);
-}
-
-function addShips(){
-	displayShip2("Carrier", sessionStorage.getItem("Carrierd"), sessionStorage.getItem("Carrierc"));
-	displayShip2("Battleship", sessionStorage.getItem("Battleshipd"), sessionStorage.getItem("Battleshipc"));
-	displayShip2("Submarine", sessionStorage.getItem("Submarined"), sessionStorage.getItem("Submarinec"));
-	displayShip2("Cruiser", sessionStorage.getItem("Cruiserd"), sessionStorage.getItem("Cruiserc"));
-	displayShip2("PatrolBoat", sessionStorage.getItem("PatrolBoatd"), sessionStorage.getItem("PatrolBoatc"));
-}
-
-
-function displayShip2(ship, dir, cell){
-	var numcells;
-	var shipcolor;
-	
-	switch(ship){
-		case "Carrier":
-			numcells=5;
-			shipcolor= 'orange';
-		break;
-		case "Battleship":
-			numcells=4;
-			shipcolor= 'red';
-		break;
-		case "Submarine":
-			numcells=3;
-			shipcolor= 'purple';
-		break;
-		case "Cruiser":
-			numcells=3;
-			shipcolor= 'pink';
-		break;
-		case "PatrolBoat":
-			numcells=2;
-			shipcolor= 'green';
-		break;
-	}
-	if(dir=="DOWN"){
-		for(var i = cell[1]; i<((parseInt(cell[1],10))+numcells); i++){
-			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
-		}
-	}
-	if(dir=="UP"){
-		for(var i = cell[1]; i>((parseInt(cell[1],10))-numcells); i--){
-			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
-		}
-	}
-	if(dir=="LEFT"){
-		for(var i = cell[0]; i.charCodeAt()>(cell[0].charCodeAt() - numcells); i = String.fromCharCode(i.charCodeAt() - 1)){
-			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
-		}
-	}
-	if(dir=="RIGHT"){
-		for(var i = cell[0]; i.charCodeAt()<(cell[0].charCodeAt() + numcells); i = String.fromCharCode(i.charCodeAt() + 1)){
-			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
-		}
-	}
 }
 
 function displayShip(ship, dir, cell){
