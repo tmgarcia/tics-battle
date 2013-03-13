@@ -38,4 +38,5 @@ function startBotGame(botName)
 	b = b + "</li></ul>";
 	
 	document.getElementById("bots").innerHTML = b;
+	window.setTimeout(window.open('PlaceShips.html','_self','','true'), 10000);
 }
