@@ -27,7 +27,7 @@ function showBots()
 function startBotGame(botName)
 {
 	xmlhttp = new XMLHttpRequest();
-	xmlhttp.withCredtials = true;
+	xmlhttp.withCredentials = true;
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame", false);
 	xmlhttp.send("<request><playerID>" + playerName + "</playerID><robot>" + botName + "</robot></request>");
 	xmlDoc = xmlhttp.responseXML;
