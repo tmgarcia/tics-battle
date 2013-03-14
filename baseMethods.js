@@ -6,7 +6,7 @@ function createPVPGame(name)
 {
 	xmlhttp=new XMLHttpRequest();
 	xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame", false);
-	//xmlhttp.withCredentials=true;
+	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request><playerID>" + name + "</playerID></request>");
 	
 	if(xmlhttp.responseText.indexOf("request must include")!= -1){
@@ -308,7 +308,7 @@ function makeTable()
 {
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/GameList", false);
-	//xmlhttp.withCredtials = true;
+	xmlhttp.withCredentials = true;
 	xmlhttp.send("<request></request>");
 	xmlDoc = xmlhttp.responseXML; 
 	
@@ -338,7 +338,7 @@ function joinGame(clicked_ID)
 	var selectedGame = x[clicked_ID].getElementsByTagName("gameID")[0].childNodes[0].nodeValue;
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Join", false);
-	//xmlhttp.withCredentials = true;
+	xmlhttp.withCredentials = true;
 	xmlhttp.send("<request><playerID>" + thename + "</playerID><gameID>" + selectedGame + "</gameID></request>");
 	xmlDoc = xmlhttp.responseXML;
 	
@@ -384,7 +384,7 @@ function startBotGame(botName)
 {
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame", false);
-	//xmlhttp.withCredentials = true;
+	xmlhttp.withCredentials = true;
 	xmlhttp.send("<request><playerID>" + playerName + "</playerID><robot>" + botName + "</robot></request>");
 	xmlDoc = xmlhttp.responseXML;
 	
