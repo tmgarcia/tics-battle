@@ -97,6 +97,18 @@ function fire(coordinates) {
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Fire", false);
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request><coordinates>" + coordinates + "</coordinates></request>");
+	if(xmlhttp.responseText.indexOf("Miss")!= -1){
+		var tile = document.getElementById(coordinates + "e");
+		tile.className = 'fireButtonMiss';
+	}
+	else if(xmlhttp.responseText.indexOf("Hit")!= -1){
+		var tile = document.getElementById(coordinates + "e");
+		tile.className = 'fireButtonHit';
+	}
+	else if(xmlhttp.responseText.indexOf("Sunk")!= -1){
+		var tile = document.getElementById(coordinates + "e");
+		tile.className = 'fireButtonDead';
+	}
 	return xmlhttp.responseXML;
 }
 
