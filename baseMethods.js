@@ -48,6 +48,7 @@ function addShips(){
 function displayShip2(ship, dir, cell){
 	var numcells;
 	var shipcolor;
+	var coordNum = parseInt(cell.substring(1, cell.length), 10);
 	
 	switch(ship){
 		case "Carrier":
@@ -72,23 +73,23 @@ function displayShip2(ship, dir, cell){
 		break;
 	}
 	if(dir=="DOWN"){
-		for(var i = cell[1]; i<((parseInt(cell[1],10))+numcells); i++){
+		for(var i = coordNum; i<(coordNum +numcells); i++){
 			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
 		}
 	}
 	if(dir=="UP"){
-		for(var i = cell[1]; i>((parseInt(cell[1],10))-numcells); i--){
+		for(var i = coordNum; i>(coordNum-numcells); i--){
 			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
 		}
 	}
 	if(dir=="LEFT"){
 		for(var i = cell[0]; i.charCodeAt()>(cell[0].charCodeAt() - numcells); i = String.fromCharCode(i.charCodeAt() - 1)){
-			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
+			document.getElementById("" + i + coordNum).style.backgroundColor = shipcolor;
 		}
 	}
 	if(dir=="RIGHT"){
 		for(var i = cell[0]; i.charCodeAt()<(cell[0].charCodeAt() + numcells); i = String.fromCharCode(i.charCodeAt() + 1)){
-			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
+			document.getElementById("" + i + coordNum).style.backgroundColor = shipcolor;
 		}
 	}
 }
@@ -120,7 +121,7 @@ function resetShips(){
 		document.getElementById("unsetPatrolBoat").style.backgroundColor = "";
 }
 function resetCells(){
-	for(var i = 1; i<=8; i++){
+	for(var i = 1; i<=10; i++){
 		if(document.getElementById('A' + i).disabled == false)
 			document.getElementById('A' + i).style.backgroundColor = "";
 		if(document.getElementById('B' + i).disabled == false)
@@ -137,6 +138,10 @@ function resetCells(){
 			document.getElementById('G' + i).style.backgroundColor = "";
 		if(document.getElementById('H' + i).disabled == false)
 			document.getElementById('H' + i).style.backgroundColor = "";
+		if(document.getElementById('I' + i).disabled == false)
+			document.getElementById('I' + i).style.backgroundColor = "";
+		if(document.getElementById('J' + i).disabled == false)
+			document.getElementById('J' + i).style.backgroundColor = "";
 	}
 }
 function resetDirections(){
@@ -237,6 +242,7 @@ function storeCoordinates(ship_name, ship_coordinates, ship_direction){
 function displayShip(ship, dir, cell){
 	var numcells;
 	var shipcolor;
+	var coordNum = parseInt(cell.substring(1, cell.length), 10);
 	
 	switch(ship){
 		case "Carrier":
@@ -261,27 +267,27 @@ function displayShip(ship, dir, cell){
 		break;
 	}
 	if(dir=="DOWN"){
-		for(var i = cell[1]; i<((parseInt(cell[1],10))+numcells); i++){
+		for(var i = coordNum; i<(coordNum + numcells); i++){
 			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
 			document.getElementById("" + cell[0] + i).disabled = true;
 		}
 	}
 	if(dir=="UP"){
-		for(var i = cell[1]; i>((parseInt(cell[1],10))-numcells); i--){
+		for(var i = coordNum; i>(coordNum - numcells); i--){
 			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
 			document.getElementById("" + cell[0] + i).disabled = true;
 		}
 	}
 	if(dir=="LEFT"){
 		for(var i = cell[0]; i.charCodeAt()>(cell[0].charCodeAt() - numcells); i = String.fromCharCode(i.charCodeAt() - 1)){
-			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
-			document.getElementById("" + i + cell[1]).disabled = true;
+			document.getElementById("" + i + coordNum).style.backgroundColor = shipcolor;
+			document.getElementById("" + i + coordNum).disabled = true;
 		}
 	}
 	if(dir=="RIGHT"){
 		for(var i = cell[0]; i.charCodeAt()<(cell[0].charCodeAt() + numcells); i = String.fromCharCode(i.charCodeAt() + 1)){
-			document.getElementById("" + i + cell[1]).style.backgroundColor = shipcolor;
-			document.getElementById("" + i + cell[1]).disabled = true;
+			document.getElementById("" + i + coordNum).style.backgroundColor = shipcolor;
+			document.getElementById("" + i + coordNum).disabled = true;
 		}
 	}
 }
