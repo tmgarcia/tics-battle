@@ -16,7 +16,6 @@ function createPVPGame(name)
 			alert("Something is wrong...");
 	}
 	else{
-		displayInfo(getXMLValue(xmlhttp.responseXML, "gameID"), "myDiv") ;
 		window.setTimeout(window.open('PlaceShips.html','_self','','true'), 3000);
 		}
 }
