@@ -317,8 +317,19 @@ function sendID(name)
 	{
 		thename = name;
 		document.getElementById("playerForm").innerHTML = "<h2 id='welcome'>Welcome " + thename + ".</h2>";
-		makeTable();
+		tableLoop();
 	}
+}
+
+var askNumber = 0;
+function tableLoop()
+{
+	if(askNumber === 0)
+	{
+		makeTable();
+		askNumber++;
+	}
+	window.setInterval("makeTable()",3000);
 }
 
 function makeTable()
@@ -330,23 +341,35 @@ function makeTable()
 	xmlDoc = xmlhttp.responseXML; 
 	
 	var w = "<h1>Here is a list of available games:</h1>";
-	w =  w + "<table border='1'>";
-	
-	w = w + "<th>Game ID</th><th>Player's Name</th><th>Join Game</th>";
 	
 	x = xmlDoc.getElementsByTagName("game");
-	for (i = 0; i < x.length; i++)
+	
+	if(x.length < 1)
 	{
-		w = w + "<tr><td>";
-		w = w + x[i].getElementsByTagName("gameID")[0].childNodes[0].nodeValue;
-		w = w + "</td><td>";
-		w = w + x[i].getElementsByTagName("turn")[0].childNodes[0].nodeValue;
-		w = w + "</td><td>";
-		w = w + "<button id =" + i + " onclick='joinGame(this.id)'>Join</button>";
-		w = w + "</td></tr>";
+		w = w + "<h3>There are currently no active games. Please wait as this list refreshes automatically.</h3>";
 	}
-	w = w + "</table>";
+	
+	else
+	{
+		w =  w + "<table border='1'>";
+	
+		w = w + "<th>Game ID</th><th>Player's Name</th><th>Join Game</th>";
+	
+	
+		for (i = 0; i < x.length; i++)
+		{
+			w = w + "<tr><td>";
+			w = w + x[i].getElementsByTagName("gameID")[0].childNodes[0].nodeValue;
+			w = w + "</td><td>";
+			w = w + x[i].getElementsByTagName("turn")[0].childNodes[0].nodeValue;
+			w = w + "</td><td>";
+			w = w + "<button id =" + i + " onclick='joinGame(this.id)'>Join</button>";
+			w = w + "</td></tr>";
+		}
+		w = w + "</table>";
+	}
 	document.getElementById("table").innerHTML= w;
+
 }
 
 function joinGame(clicked_ID)
