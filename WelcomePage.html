@@ -1,22 +1,29 @@
+<!DOCTYPE html>
 <html>
-  <head>
-      <script type="text/javascript" src="baseMethods.js"></script>
-  </head>
-  <body>
-      <h1>Welcome to BattleShip</h1>
-      <h2><a onclick="showOptions()">Create Game</a></h2>
-      <div id="createOptions"></div>
-      <h2><a onclick="joinGame()">Join Game</a></h2>
-      <script>
-        function showOptions(){
-  	        var links = "<h3><a href = \"createPVP.html\">New PVP Game</a></h3><h3><a href = \"makeAIGame.html\">New AI Game</a></h3>";
-            document.getElementById("createOptions").innerHTML= links;
-        }
+	<head>
+		<title>Welcome To Battleships!</title>
+		<script type="text/javascript" src="baseMethods.js"></script>
+	</head>
+	
+	<body>
+		<h1>Welcome to BattleShip</h1>
+		<h2><a onclick="showOptions()">Create Game</a></h2>
 		
-		function joinGame()
-		{
-			window.open('FindAGame.html','_self', '', 'true');
-		}
-      </script>
-  </body>
+		<div id="createOptions"></div>
+			
+		<h2><a onclick="joinGame()">Join Game</a></h2>
+			
+		<script>
+			function showOptions()
+			{
+				var links="<h3><a href = \"createPVP.html\">New PVP Game</a></h3><h3><a href = \"makeAIGame.html\">New AI Game</a></h3>";
+				document.getElementById("createOptions").innerHTML=links;
+			}
+		
+			function joinGame()
+			{
+				window.open('FindAGame.html', '_self', '', 'true');
+			}
+		</script>
+	</body>
 </html>
