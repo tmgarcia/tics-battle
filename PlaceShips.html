@@ -181,10 +181,11 @@
 	<div id="quit">
 	<button id="forfeit" onclick="forfeit2()" type="button">Forfeit</button>
 	</div>
+	<div id="audio"></div>
 	</div>
 	<script>
 		window.onload=function(){
-			
+			document.getElementById("audio").innerHTML="<embed src='themeplace.mp3' hidden='true' autostart='true' />";
 		}
 		window.onunload=function()
 		{

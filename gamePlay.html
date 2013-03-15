@@ -307,12 +307,14 @@
 	<div id="quit">
 	<button id="forfeit" onclick="forfeit()" type="button">Forfeit</button>
 	</div>
+	<div id="audio"></div>
 	</div>
 	<script>
 		function fix(){
 			addShips();
 			update();
 			autorefresh();
+			document.getElementById("audio").innerHTML= "<embed src='playtheme.mp3' hidden='true' autostart='true' />";
 		}
 		window.onunload=function()
 		{

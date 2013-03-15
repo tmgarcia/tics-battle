@@ -97,6 +97,7 @@
 }
 
 body{
+	background-color:#646464;
 	background-image:url('battleback.jpg'); 
 	background-repeat:no-repeat; 
 	background-position:50% 0%; 
@@ -109,6 +110,7 @@ body{
 }
 
 #title2{
+	margin-top:50px;
 	font-size:80px;
 	text-align:center;
 	font-weight:bold;
@@ -143,7 +145,7 @@ body{
 background-image:url('forfeitscreenback.jpg'); 
 background-repeat:no-repeat; 
 background-position:50% 0%; 
-height:90em; margin-top:50px; 
+margin-top:50px; 
 text-align:center;"
 }
 
@@ -155,7 +157,7 @@ margin-top:750px;
 background-image:url('forfeitwinscreenback.jpg'); 
 background-repeat:no-repeat; 
 background-position:50% 0%; 
-height:90em; margin-top:50px; 
+margin-top:50px; 
 text-align:center;"
 }
 
@@ -167,19 +169,19 @@ margin-top:750px;
 background-image:url('winscreenback.jpg'); 
 background-repeat:no-repeat; 
 background-position:50% 0%; 
-height:90em; margin-top:50px; 
+margin-top:50px; 
 text-align:center;"
 }
 
 #winscreen button{
 margin-top:750px;
-}
+}<img src="url" alt="some_text">
 
 #losescreen{
 background-image:url('losescreenback.jpg'); 
 background-repeat:no-repeat; 
 background-position:50% 0%; 
-height:90em; margin-top:50px; 
+margin-top:50px; 
 text-align:center;"
 }
 

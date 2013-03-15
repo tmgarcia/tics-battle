@@ -8,7 +8,7 @@
 	
 	<body>
 	<div class="screen">
-		<div id="title2">Welcome to BattleShip</div>
+		<div id="title2"><img src="BattleTitle.jpg" alt="Welcome to BattleShip"></div>
 		<div id="choices">
 		<button id="createGameB" type="button" onclick="showOptions()"></button>
 		
@@ -18,9 +18,11 @@
 		</div>
 		<div id="winscore">Total Wins:<br /> None yet. Get playing!</div>
 		<div id="lossscore">Total Losses:<br /> None? Psh. Yet.</div>
+		<div id="audio"></div>
 	</div>
 		<script>
 			window.onload = function(){
+				document.getElementById("audio").innerHTML= "<embed src='theme.mp3' hidden='true' autostart='true' />";
 				if(localStorage.playerWins && localStorage.playerWins !=0){
 					document.getElementById("winscore").innerHTML="Total Wins: " + localStorage.playerWins + "<br /><button id= 'reset' onclick='resetWins()' >Reset</button>";
 				}

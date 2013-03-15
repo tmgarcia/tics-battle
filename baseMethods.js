@@ -196,10 +196,10 @@ function update(){
 		window.onbeforeunload = function(){};
 		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
-			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><embed src='themeforfwin.mp3' hidden='true' autostart='true' /><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
 		else{
-			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'forfeitscreen' ><embed src='themeforf.mp3' hidden='true' autostart='true' /><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
 	}
 	if(xmlhttp.responseText.indexOf("<state>Finished</state>")!=-1){
@@ -213,7 +213,7 @@ function update(){
 			else{
 				localStorage.playerWins = 1;
 			}
-			document.body.innerHTML = "<div id = 'winscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'winscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div><embed src='themewin.mp3' hidden='true' autostart='true' />";
 		}
 		else{
 			if(localStorage.playerLosses){
@@ -222,7 +222,7 @@ function update(){
 			else{
 				localStorage.playerLosses = 1;
 			}
-			document.body.innerHTML = "<div id = 'losescreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'losescreen' ><embed src='themelose.mp3' hidden='true' autostart='true' /><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
 	}
 	if(xmlhttp.responseText.indexOf("<state>Forfeited</state>")!=-1){
@@ -230,7 +230,7 @@ function update(){
 		window.onbeforeunload = function(){};
 		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
-			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><embed src='themeforfwin.mp3' hidden='true' autostart='true' /><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 			if(localStorage.playerWins){
 				localStorage.playerWins = Number(localStorage.playerWins)+1;
 			}
@@ -239,7 +239,7 @@ function update(){
 			}
 		}
 		else{
-			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'forfeitscreen' ><embed src='themeforf.mp3' hidden='true' autostart='true' /><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 			if(localStorage.playerLosses){
 				localStorage.playerLosses = Number(localStorage.playerWins)+1;
 			}
