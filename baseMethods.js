@@ -615,7 +615,7 @@ var z;
 
 function sendID_AI(name)
 {  
-  if(name === "")
+  if(name === "" || name === " ")
 	{
 		document.getElementById("bots").innerHTML = "You must enter a name with at least one character.";
 	}
