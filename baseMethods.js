@@ -364,12 +364,17 @@ function checksOut(responseText){
 		else if(responseText.indexOf("is already over")!= -1){
 			window.onbeforeunload = function(){};
 			window.onunload = function(){};
-			displayInfo("The other player joined and forfeit the game. Sorry about that. :/ <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
+			displayInfo("The game has already been forfeited. <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
 		}
 		else if(responseText.indexOf("has forfeited")!= -1){
 			window.onbeforeunload = function(){};
 			window.onunload = function(){};
 			displayInfo("You've already forfeited by refreshing the page. Nice. <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
+		}
+		else if(responseText.indexOf("Fake is not a member")!= -1){
+			window.onbeforeunload = function(){};
+			window.onunload = function(){};
+			displayInfo("You've already forfeited by refreshing the page once. You should just. Stop. <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
 		}
 		else
 			displayInfo("Something is wrong...", "displayConfirm") ;
