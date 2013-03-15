@@ -167,6 +167,8 @@ function update(){
 	
 	if(xmlhttp.responseText.indexOf("<state>TimedOut</state>")!=-1){
 		checker = window.clearInterval(checker);
+		window.onbeforeunload = function(){};
+		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
 			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
@@ -176,6 +178,8 @@ function update(){
 	}
 	if(xmlhttp.responseText.indexOf("<state>Finished</state>")!=-1){
 		checker = window.clearInterval(checker);
+		window.onbeforeunload = function(){};
+		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
 			document.body.innerHTML = "<div id = 'winscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
@@ -185,6 +189,8 @@ function update(){
 	}
 	if(xmlhttp.responseText.indexOf("<state>Forfeited</state>")!=-1){
 		checker = window.clearInterval(checker);
+		window.onbeforeunload = function(){};
+		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
 			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
@@ -330,6 +336,8 @@ function placeShip(){
 			c = undefined;
 		}
 		if(everyShipSet()){
+			window.onbeforeunload = function(){};
+			window.onunload = function(){};
 			window.open('gamePlay.html','_self','','true')
 		}
 	}

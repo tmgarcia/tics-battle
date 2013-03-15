@@ -178,6 +178,19 @@
 	<div id="confirm">
 		<button id="confirmbutton" type="button" onclick="placeShip()" disabled><h4>4. Confirm</h4></button>
 	</div>
+	<div id="quit">
+	<button id="forfeit" onclick="forfeit()" type="button">Forfeit</button>
 	</div>
+	</div>
+	<script>
+		window.onunload=function()
+		{
+			forfeit();
+		}
+		window.onbeforeunload = function()
+		{
+			return "Leaving or reloading this page in any way will cause you to lose the game. You haven't even started!";
+		}
+	</script>
   </body>
 </html>
