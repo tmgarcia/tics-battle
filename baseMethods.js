@@ -324,12 +324,12 @@ function sendID(name)
 var askNumber = 0;
 function tableLoop()
 {
-	if(askNumber === 0)
+	if(askNumber == 0)
 	{
 		makeTable();
-		askNumber++;
+		askNumber = askNumber + 1;
 	}
-	window.setInterval("makeTable()",3000);
+	window.setInterval("makeTable()", 3000);
 }
 
 function makeTable()
@@ -375,6 +375,7 @@ function makeTable()
 function joinGame(clicked_ID)
 {
 
+	
 	var selectedGame = x[clicked_ID].getElementsByTagName("gameID")[0].childNodes[0].nodeValue;
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Join", false);
@@ -382,6 +383,16 @@ function joinGame(clicked_ID)
 	xmlhttp.send("<request><playerID>" + thename + "</playerID><gameID>" + selectedGame + "</gameID></request>");
 	xmlDoc = xmlhttp.responseXML;
 	
+	
+	
+	if(xmlhttp.responseText.indexOf("error")!= -1)
+	{
+		var b = ("<h5>Someone else has already joined that game! Please pick a different one.</h5>");
+		document.getElementById("errorText").innerHTML = b;
+	}
+	
+	else
+	{
 	var a = xmlDoc.getElementsByTagName("response");
 	var b = "<ul><li>";
 	b = b + a[0].getElementsByTagName("gameID")[0].childNodes[0].nodeValue;
@@ -391,6 +402,7 @@ function joinGame(clicked_ID)
 	
 	document.getElementById("table").innerHTML = b;
 	window.setTimeout(window.open('PlaceShips.html','_self','','true'), 10000);
+	}
 }
 
 /*---------Create An AI Game Methods---------*/
@@ -429,6 +441,7 @@ function startBotGame(botName)
 	xmlDoc = xmlhttp.responseXML;
 	
 	var a = xmlDoc.getElementsByTagName("response");
+
 	var b = "<ul><li>";
 	b = b + a[0].getElementsByTagName("gameID")[0].childNodes[0].nodeValue;
 	b = b + "</li></ul>";
