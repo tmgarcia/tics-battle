@@ -1,3 +1,19 @@
+#winscore{
+	margin-left:100px;
+	display:inline;
+	float:left;
+	font-size:30px;
+	margin-bottom:100px;
+}
+
+#lossscore{
+	margin-right:100px;
+	display:inline;
+	float:right;
+	font-size:30px;
+	margin-bottom:100px;
+}
+
 #allthegames{
 	text-align:center;
 }
@@ -19,6 +35,9 @@
 }
 
 #createGameB{
+
+	margin-left:0em;
+	margin-right:0em;
 	width:250px;
 	height:50px;
 	background-image:url('creategamebutton.jpg');
@@ -27,6 +46,8 @@
 }
 
 #joinGameB{
+	margin-left:0em;
+	margin-right:0em;
 	width:250px;
 	height:50px;
 	background-image:url('joingamebutton.jpg');
@@ -94,6 +115,9 @@ body{
 }
 
 #choices{
+	margin-left:0em;
+	margin-right:0em;
+	display:block;
 	text-align:center;
 	font-size:15px;
 }

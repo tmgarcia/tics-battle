@@ -5,6 +5,11 @@ function backToStart(){
 	window.open('WelcomePage.html','_self','','true');
 }
 
+function resetWins(){
+	localStorage.playerWins = 0;
+	location.reload();
+}
+
 /*---------Create Game Methods----------*/
 function createPVPGame(name)
 {
@@ -202,10 +207,21 @@ function update(){
 		window.onbeforeunload = function(){};
 		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
+			if(localStorage.playerWins){
+				localStorage.playerWins = Number(localStorage.playerWins)+1;
+			}
+			else{
+				localStorage.playerWins = 1;
+			}
 			document.body.innerHTML = "<div id = 'winscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
-		//	sessionStorage.setItem(, ship_direction);
 		}
 		else{
+			if(localStorage.playerLosses){
+				localStorage.playerLosses = Number(localStorage.playerWins)+1;
+			}
+			else{
+				localStorage.playerLosses = 1;
+			}
 			document.body.innerHTML = "<div id = 'losescreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
 	}
@@ -215,9 +231,21 @@ function update(){
 		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
 			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			if(localStorage.playerWins){
+				localStorage.playerWins = Number(localStorage.playerWins)+1;
+			}
+			else{
+				localStorage.playerWins = 1;
+			}
 		}
 		else{
 			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			if(localStorage.playerLosses){
+				localStorage.playerLosses = Number(localStorage.playerWins)+1;
+			}
+			else{
+				localStorage.playerLosses = 1;
+			}
 		}
 	}
 }
@@ -595,7 +623,7 @@ function sendID_AI(name)
 	{
 		playerName = name;
 		sessionStorage.setItem("playersID", name);
-		document.getElementById("playerForm").innerHTML = "<h2 id='welcome'>Welcome " + playerName + ".</h2>";
+		document.getElementById("playerForm").innerHTML = "<h2 id='welcome'>Welcome " + playerName + "! And good luck.</h2>";
 		showBots();
 	}
 }

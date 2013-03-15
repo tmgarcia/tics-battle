@@ -16,8 +16,19 @@
 			
 		<button id="joinGameB" type="button" onclick="joinGame()"></button>
 		</div>
+		<div id="winscore">Total Wins:<br /> None yet. Get playing!</div>
+		<div id="lossscore">Total Losses:<br /> None? Psh. Yet.</div>
 	</div>
 		<script>
+			window.onload = function(){
+				if(localStorage.playerWins && localStorage.playerWins !=0){
+					document.getElementById("winscore").innerHTML="Total Wins: " + localStorage.playerWins + "<br /><button id= 'reset' onclick='resetWins()' >Reset</button>";
+				}
+				if(localStorage.playerLosses){
+					document.getElementById("lossscore").innerHTML="Total Losses: " + localStorage.playerLosses;
+				}
+			}
+			
 			function showOptions()
 			{
 				var links="<button id= \"pvpGameB\" onclick=\"document.location.href = 'createPVP.html'\" ></button><button id= \"aiGameB\" onclick=\"document.location.href = 'makeAIGame.html'\" ></button>";
