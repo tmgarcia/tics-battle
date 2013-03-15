@@ -228,6 +228,8 @@ function forfeit2(){
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request></request>");
 	
+	window.onbeforeunload = function(){};
+	window.onunload = function(){};
 	document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 }
 
