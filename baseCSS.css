@@ -166,27 +166,27 @@ margin-top:750px;
 }
 
 #winscreen{
-background-image:url('winscreenback.jpg'); 
-background-repeat:no-repeat; 
-background-position:50% 0%; 
-margin-top:50px; 
-text-align:center;"
+	background-image:url('winscreenback.jpg'); 
+	background-repeat:no-repeat; 
+	background-position:50% 0%; 
+	margin-top:50px; 
+	text-align:center;
 }
 
 #winscreen button{
 margin-top:750px;
-}<img src="url" alt="some_text">
+}
 
 #losescreen{
-background-image:url('losescreenback.jpg'); 
-background-repeat:no-repeat; 
-background-position:50% 0%; 
-margin-top:50px; 
-text-align:center;"
+	background-image:url('losescreenback.jpg'); 
+	background-repeat:no-repeat; 
+	background-position:50% 0%; 
+	margin-top:50px; 
+	text-align:center;
 }
 
 #losescreen button{
-margin-top:750px;
+	margin-top:750px;
 }
 
 /*Code for Placing ships*/
