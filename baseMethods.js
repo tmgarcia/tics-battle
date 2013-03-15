@@ -48,6 +48,27 @@ function forfeit(){
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Forfeit", false);
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request></request>");
+	console.log(xmlhttp.responseText);
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request></request>");
+	console.log(xmlhttp.responseText);
+	
+	var ID = getXMLValue(xmlhttp.responseXML, "gameID");
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Join", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request><request><playerID>Fake</playerID><gameID>"+ ID +"</gameID></request></request>");
+	console.log(xmlhttp.responseText);
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request></request>");
+	console.log(xmlhttp.responseText);
 }
 
 function addShips(){
@@ -227,6 +248,27 @@ function forfeit2(){
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Forfeit", false);
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request></request>");
+	console.log(xmlhttp.responseText);
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request></request>");
+	console.log(xmlhttp.responseText);
+	
+	var ID = getXMLValue(xmlhttp.responseXML, "gameID");
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Join", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request><request><playerID>Fake</playerID><gameID>"+ ID +"</gameID></request></request>");
+	console.log(xmlhttp.responseText);
+	
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request></request>");
+	console.log(xmlhttp.responseText);
 	
 	window.onbeforeunload = function(){};
 	window.onunload = function(){};
