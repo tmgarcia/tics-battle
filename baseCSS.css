@@ -3,6 +3,42 @@
 	text-align:center;
 }
 
+#quit{
+	margin-top:700px;
+	text-align:center;
+}
+
+#forfeit{
+	width:100px;
+	height:50px;
+	clear:both;
+	font-weight:bold;
+}
+
+#forfeitscreen{
+background-image:url('forfeitscreenback.jpg'); 
+background-repeat:no-repeat; 
+background-position:50% 0%; 
+height:90em; margin-top:50px; 
+text-align:center;"
+}
+
+#forfeitscreen button{
+margin-top:750px;
+}
+
+#forfeitwinscreen{
+background-image:url('forfeitwinscreenback.jpg'); 
+background-repeat:no-repeat; 
+background-position:50% 0%; 
+height:90em; margin-top:50px; 
+text-align:center;"
+}
+
+#forfeitwinscreen button{
+margin-top:750px;
+}
+
 #winscreen{
 background-image:url('winscreenback.jpg'); 
 background-repeat:no-repeat; 

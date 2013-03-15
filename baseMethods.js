@@ -42,6 +42,14 @@ return xmlDoc.getElementsByTagName(valueName)[0].firstChild.nodeValue;
 }
 
 /*-----------Game Play Methods--------*/
+
+function forfeit(){
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Forfeit", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request></request>");
+}
+
 function addShips(){
 	displayShip2("Carrier", sessionStorage.getItem("Carrierd"), sessionStorage.getItem("Carrierc"));
 	displayShip2("Battleship", sessionStorage.getItem("Battleshipd"), sessionStorage.getItem("Battleshipc"));
@@ -127,7 +135,7 @@ function update(){
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request></request>");
-	
+	console.log(xmlhttp.responseText);
 	if(xmlhttp.responseText.indexOf("<status>Hit</status>")!=-1 && xmlhttp.responseText.indexOf("<playerID>" + sessionStorage.getItem("playersID"))==-1){
 		var hitCell = getXMLValue(xmlhttp.responseXML, "coordinate");
 		document.getElementById(hitCell).style.backgroundColor= 'red';
@@ -153,7 +161,6 @@ function update(){
 		displayInfo("Their Turn", "turnIndicator");
 		disableFireButtons(true);
 	}
-	
 	if(xmlhttp.responseText.indexOf("<state>Finished</state>")!=-1){
 		checker = window.clearInterval(checker);
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
@@ -161,6 +168,15 @@ function update(){
 		}
 		else{
 			document.body.innerHTML = "<div id = 'losescreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+		}
+	}
+	if(xmlhttp.responseText.indexOf("<state>Forfeited</state>")!=-1){
+		checker = window.clearInterval(checker);
+		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
+			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+		}
+		else{
+			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
 		}
 	}
 }
