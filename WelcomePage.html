@@ -3,16 +3,20 @@
 	<head>
 		<title>Welcome To Battleships!</title>
 		<script type="text/javascript" src="baseMethods.js"></script>
+		<link rel="stylesheet" type="text/css" href="baseCSS.css"/>
 	</head>
 	
 	<body>
-		<h1>Welcome to BattleShip</h1>
+	<div class="screen">
+		<div id="title2">Welcome to BattleShip</div>
+		<div id="choices">
 		<h2><a onclick="showOptions()">Create Game</a></h2>
 		
 		<div id="createOptions"></div>
 			
 		<h2><a onclick="joinGame()">Join Game</a></h2>
-			
+		</div>
+	</div>
 		<script>
 			function showOptions()
 			{

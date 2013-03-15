@@ -135,7 +135,6 @@ function update(){
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request></request>");
-	console.log(xmlhttp.responseText);
 	if(xmlhttp.responseText.indexOf("<status>Hit</status>")!=-1 && xmlhttp.responseText.indexOf("<playerID>" + sessionStorage.getItem("playersID"))==-1){
 		var hitCell = getXMLValue(xmlhttp.responseXML, "coordinate");
 		document.getElementById(hitCell).style.backgroundColor= 'red';
@@ -149,6 +148,11 @@ function update(){
 		document.getElementById(hitCell).style.backgroundImage="url('dead.jpg')";
 	}
 	
+	if(xmlhttp.responseText.indexOf("<state>WaitingFor2nd</state>")!=-1){
+		displayInfo("Waiting for another player to join your game.", "turnIndicator");
+		disableFireButtons(true);
+	}
+	
 	if(xmlhttp.responseText.indexOf("<state>WaitingForShips</state>")!=-1){
 		displayInfo("Waiting for other player to place ships.", "turnIndicator");
 		disableFireButtons(true);
@@ -160,6 +164,15 @@ function update(){
 	else{
 		displayInfo("Their Turn", "turnIndicator");
 		disableFireButtons(true);
+	}
+	if(xmlhttp.responseText.indexOf("<state>TimedOut</state>")!=-1){
+		checker = window.clearInterval(checker);
+		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
+			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+		}
+		else{
+			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+		}
 	}
 	if(xmlhttp.responseText.indexOf("<state>Finished</state>")!=-1){
 		checker = window.clearInterval(checker);

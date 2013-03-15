@@ -1,6 +1,45 @@
+.screen{
+	width:98%;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#ffffff;
+	border:1px solid black;
+	opacity:0.6;
+	overflow:hidden;
+}
+
+#warning{
+	text-align:center;
+	color:red;
+	font-size:20px;
+}
+
+body{
+	background-image:url('battleback.jpg'); 
+	background-repeat:no-repeat; 
+	background-position:50% 0%; 
+}
+
 #title{
 	font-size:40px;
 	text-align:center;
+	font-weight:bold;
+}
+
+#title2{
+	font-size:80px;
+	text-align:center;
+	font-weight:bold;
+}
+
+#choices{
+	text-align:center;
+	font-size:15px;
+}
+
+#playerForm{
+	text-align:center;
+	font-size:20px;
 }
 
 #quit{
