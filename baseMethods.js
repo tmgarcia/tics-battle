@@ -203,6 +203,7 @@ function update(){
 		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
 			document.body.innerHTML = "<div id = 'winscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+		//	sessionStorage.setItem(, ship_direction);
 		}
 		else{
 			document.body.innerHTML = "<div id = 'losescreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
