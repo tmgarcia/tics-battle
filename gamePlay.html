@@ -4,7 +4,7 @@
     <script type="text/javascript" src="baseMethods.js"></script>
   <link rel="stylesheet" type="text/css" href="baseCSS.css"/>
   </head>
-  <body onload="fix()">
+  <body onload="fix()" onunload="forfeit()">
 	<div id="turnIndicator">Your Turn</div>
 	<div id="playerShips">
 		<h1>Your Ships</h1>
@@ -310,6 +310,11 @@
 			addShips();
 			update();
 			autorefresh();
+		}
+		
+		window.onbeforeunload = function()
+		{
+			return "Leaving or reloading this page in any way will cause you to lose the game.";
 		}
 	</script>
   </body>
