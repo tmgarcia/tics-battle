@@ -15,7 +15,7 @@
 
 #gameslist{
 	max-width:90em;
-	overflow:scroll;
+	overflow:auto;
 }
 
 #createGameB{

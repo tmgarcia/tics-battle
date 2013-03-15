@@ -441,7 +441,7 @@ function sendID(name)
 	{
 		thename = name;
 		sessionStorage.setItem("playersID", name);
-		document.getElementById("playerForm").innerHTML = "<h2 id='welcome'>Welcome " + thename + ".</h2>";
+		document.getElementById("playerForm").innerHTML = "<h2 id='welcome'>Welcome " + thename + "! And good luck.</h2>";
 		tableLoop();
 	}
 }
