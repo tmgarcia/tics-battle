@@ -152,8 +152,7 @@ function update(){
 		displayInfo("Waiting for another player to join your game.", "turnIndicator");
 		disableFireButtons(true);
 	}
-	
-	if(xmlhttp.responseText.indexOf("<state>WaitingForShips</state>")!=-1){
+	else if(xmlhttp.responseText.indexOf("<state>WaitingForShips</state>")!=-1){
 		displayInfo("Waiting for other player to place ships.", "turnIndicator");
 		disableFireButtons(true);
 	}
@@ -165,6 +164,7 @@ function update(){
 		displayInfo("Their Turn", "turnIndicator");
 		disableFireButtons(true);
 	}
+	
 	if(xmlhttp.responseText.indexOf("<state>TimedOut</state>")!=-1){
 		checker = window.clearInterval(checker);
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
