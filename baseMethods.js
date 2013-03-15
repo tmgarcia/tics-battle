@@ -308,6 +308,12 @@ function checksOut(responseText){
 		else if(responseText.indexOf("it already exists")!= -1){
 			displayInfo("This ship has already been placed.", "displayConfirm") ;
 		}
+		else if(responseText.indexOf("is already over")!= -1){
+			displayInfo("The other player joined and forfeit the game. Sorry about that. :/ <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
+		}
+		else if(responseText.indexOf("has forfeited")!= -1){
+			displayInfo("You've already forfeited by refreshing the page. Nice. <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
+		}
 		else
 			displayInfo("Something is wrong...", "displayConfirm") ;
 		return false;
