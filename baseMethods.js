@@ -222,6 +222,15 @@ var s; //ship
 var c; //coordinate
 var d; //direction
 
+function forfeit2(){
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Forfeit", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request></request>");
+	
+	document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+}
+
 function resetShips(){
 	if(document.getElementById("unsetSubmarine").disabled == false)
 		document.getElementById("unsetSubmarine").style.backgroundColor = "";
@@ -309,9 +318,13 @@ function checksOut(responseText){
 			displayInfo("This ship has already been placed.", "displayConfirm") ;
 		}
 		else if(responseText.indexOf("is already over")!= -1){
+			window.onbeforeunload = function(){};
+			window.onunload = function(){};
 			displayInfo("The other player joined and forfeit the game. Sorry about that. :/ <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
 		}
 		else if(responseText.indexOf("has forfeited")!= -1){
+			window.onbeforeunload = function(){};
+			window.onunload = function(){};
 			displayInfo("You've already forfeited by refreshing the page. Nice. <br /> <button id='playAgain' type='button' onclick='backToStart()'>Play again?</button>", "displayConfirm") ;
 		}
 		else
@@ -452,7 +465,7 @@ function makeTable()
 	xmlhttp.send("<request></request>");
 	xmlDoc = xmlhttp.responseXML; 
 	
-	var w = "<h1>Here is a list of available games:</h1>";
+	var w = "<div id='allthegames'><h1>Here is a list of available games:</h1>";
 	
 	x = xmlDoc.getElementsByTagName("game");
 	
@@ -472,13 +485,13 @@ function makeTable()
 		{
 			w = w + "<tr><td>";
 			w = w + x[i].getElementsByTagName("gameID")[0].childNodes[0].nodeValue;
-			w = w + "</td><td>";
+			w = w + "</td><td id = 'gameslist'>";
 			w = w + x[i].getElementsByTagName("turn")[0].childNodes[0].nodeValue;
 			w = w + "</td><td>";
 			w = w + "<button id =" + i + " onclick='joinGame(this.id)'>Join</button>";
 			w = w + "</td></tr>";
 		}
-		w = w + "</table>";
+		w = w + "</table></div>";
 	}
 	document.getElementById("table").innerHTML= w;
 

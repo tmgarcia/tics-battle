@@ -1,3 +1,64 @@
+#allthegames{
+	text-align:center;
+}
+
+#allthegames table{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#allthegames table th{
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+}
+
+#gameslist{
+	max-width:90em;
+	overflow:scroll;
+}
+
+#createGameB{
+	width:250px;
+	height:50px;
+	background-image:url('creategamebutton.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+#joinGameB{
+	width:250px;
+	height:50px;
+	background-image:url('joingamebutton.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+#createOptions{
+	text-align:center;
+}
+#pvpGameB{
+	display:block;
+	width:200px;
+	height:50px;
+	margin-left:auto;
+	margin-right:auto;
+	background-image:url('pvpgamebutton.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+#aiGameB{
+	display:block;
+	width:200px;
+	height:50px;
+	margin-left:auto;
+	margin-right:auto;
+	background-image:url('cpugamebutton.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
 .screen{
 	width:98%;
 	margin-left:auto;

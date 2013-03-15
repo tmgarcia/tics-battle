@@ -10,17 +10,17 @@
 	<div class="screen">
 		<div id="title2">Welcome to BattleShip</div>
 		<div id="choices">
-		<h2><a onclick="showOptions()">Create Game</a></h2>
+		<button id="createGameB" type="button" onclick="showOptions()"></button>
 		
 		<div id="createOptions"></div>
 			
-		<h2><a onclick="joinGame()">Join Game</a></h2>
+		<button id="joinGameB" type="button" onclick="joinGame()"></button>
 		</div>
 	</div>
 		<script>
 			function showOptions()
 			{
-				var links="<h3><a href = \"createPVP.html\">New PVP Game</a></h3><h3><a href = \"makeAIGame.html\">New AI Game</a></h3>";
+				var links="<button id= \"pvpGameB\" onclick=\"document.location.href = 'createPVP.html'\" ></button><button id= \"aiGameB\" onclick=\"document.location.href = 'makeAIGame.html'\" ></button>";
 				document.getElementById("createOptions").innerHTML=links;
 			}
 		
