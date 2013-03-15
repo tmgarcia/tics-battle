@@ -3,6 +3,29 @@
 	text-align:center;
 }
 
+#winscreen{
+background-image:url('winscreenback.jpg'); 
+background-repeat:no-repeat; 
+background-position:50% 0%; 
+height:90em; margin-top:50px; 
+text-align:center;"
+}
+
+#winscreen button{
+margin-top:750px;
+}
+
+#losescreen{
+background-image:url('losescreenback.jpg'); 
+background-repeat:no-repeat; 
+background-position:50% 0%; 
+height:90em; margin-top:50px; 
+text-align:center;"
+}
+
+#losescreen button{
+margin-top:750px;
+}
 
 /*Code for Placing ships*/
 #displayConfirm{
@@ -87,7 +110,7 @@
 	margin-bottom:20px;
 }
 #unsetBattleship{
-	background-color:red;
+	background-color:yellow;
 	width:50px;
 	height:200px;
 	float:left;
@@ -192,7 +215,7 @@
 	background-color:orange;
 }
 .battleship{
-	background-color:red;
+	background-color:yellow;
 }
 .submarine{
 	background-color:purple;

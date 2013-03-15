@@ -1,6 +1,10 @@
 var playerID;
 var gameID;
 
+function backToStart(){
+	window.open('WelcomePage.html','_self','','true');
+}
+
 /*---------Create Game Methods----------*/
 function createPVPGame(name)
 {
@@ -8,7 +12,7 @@ function createPVPGame(name)
 	xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/NewGame", false);
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request><playerID>" + name + "</playerID></request>");
-	
+	sessionStorage.setItem("playersID", name);
 	if(xmlhttp.responseText.indexOf("request must include")!= -1){
 			alert("You must input a Player ID");
 	}
@@ -19,6 +23,7 @@ function createPVPGame(name)
 		window.setTimeout(window.open('PlaceShips.html','_self','','true'), 3000);
 		}
 }
+
 function displayInfo(info, id)
 {
 document.getElementById(id).innerHTML=info;
@@ -56,7 +61,7 @@ function displayShip2(ship, dir, cell){
 		break;
 		case "Battleship":
 			numcells=4;
-			shipcolor= 'red';
+			shipcolor= 'yellow';
 		break;
 		case "Submarine":
 			numcells=3;
@@ -109,9 +114,72 @@ function fire(coordinates) {
 		var tile = document.getElementById(coordinates + "e");
 		tile.className = 'fireButtonDead';
 	}
-	return xmlhttp.responseXML;
 }
 
+var checker;
+
+function autorefresh(){
+	checker = self.setInterval("update()", 2000);
+}
+
+function update(){
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
+	xmlhttp.withCredentials=true;
+	xmlhttp.send("<request></request>");
+	
+	if(xmlhttp.responseText.indexOf("<status>Hit</status>")!=-1 && xmlhttp.responseText.indexOf("<playerID>" + sessionStorage.getItem("playersID"))==-1){
+		var hitCell = getXMLValue(xmlhttp.responseXML, "coordinate");
+		document.getElementById(hitCell).style.backgroundColor= 'red';
+	}
+	else if(xmlhttp.responseText.indexOf("<status>Miss</status>")!=-1 && xmlhttp.responseText.indexOf("<playerID>" + sessionStorage.getItem("playersID"))==-1){
+		var missCell = getXMLValue(xmlhttp.responseXML, "coordinate");
+		document.getElementById(missCell).style.backgroundColor= 'white';
+	}
+	else if(xmlhttp.responseText.indexOf("<status>Sunk</status>")!=-1 && xmlhttp.responseText.indexOf("<playerID>" + sessionStorage.getItem("playersID"))==-1){
+		var hitCell = getXMLValue(xmlhttp.responseXML, "coordinate");
+		document.getElementById(hitCell).style.backgroundImage="url('dead.jpg')";
+	}
+	
+	if(xmlhttp.responseText.indexOf("<state>WaitingForShips</state>")!=-1){
+		displayInfo("Waiting for other player to place ships.", "turnIndicator");
+		disableFireButtons(true);
+	}
+	else if(xmlhttp.responseText.indexOf("<turn>" + sessionStorage.getItem("playersID") +"</turn>")!=-1){
+		displayInfo("Your Turn", "turnIndicator");
+		disableFireButtons(false);
+	}
+	else{
+		displayInfo("Their Turn", "turnIndicator");
+		disableFireButtons(true);
+	}
+	
+	if(xmlhttp.responseText.indexOf("<state>Finished</state>")!=-1){
+		checker = window.clearInterval(checker);
+		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
+			document.body.innerHTML = "<div id = 'winscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+		}
+		else{
+			document.body.innerHTML = "<div id = 'losescreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+		}
+	}
+}
+
+
+function disableFireButtons(condition){
+	for(var i = 1; i<=10; i++){
+		document.getElementById('A' + i + 'e').disabled = condition;
+		document.getElementById('B' + i + 'e').disabled = condition;
+		document.getElementById('C' + i + 'e').disabled = condition;
+		document.getElementById('D' + i + 'e').disabled = condition;
+		document.getElementById('E' + i + 'e').disabled = condition;
+		document.getElementById('F' + i + 'e').disabled = condition;
+		document.getElementById('G' + i + 'e').disabled = condition;
+		document.getElementById('H' + i + 'e').disabled = condition;
+		document.getElementById('I' + i + 'e').disabled = condition;
+		document.getElementById('J' + i + 'e').disabled = condition;
+	}
+}
 
 /*---------Place ship methods---------*/
 
@@ -262,7 +330,7 @@ function displayShip(ship, dir, cell){
 		break;
 		case "Battleship":
 			numcells=4;
-			shipcolor= 'red';
+			shipcolor= 'yellow';
 		break;
 		case "Submarine":
 			numcells=3;
@@ -316,6 +384,7 @@ function sendID(name)
 	else
 	{
 		thename = name;
+		sessionStorage.setItem("playersID", name);
 		document.getElementById("playerForm").innerHTML = "<h2 id='welcome'>Welcome " + thename + ".</h2>";
 		tableLoop();
 	}
@@ -419,6 +488,7 @@ function sendID_AI(name)
 	else
 	{
 		playerName = name;
+		sessionStorage.setItem("playersID", name);
 		document.getElementById("playerForm").innerHTML = "<h2 id='welcome'>Welcome " + playerName + ".</h2>";
 		showBots();
 	}
