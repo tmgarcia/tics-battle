@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
+	<head>
 		<title>Find A Battleship Game</title>
 		<script type="text/javascript" src="baseMethods.js"></script>
 		<link rel="stylesheet" type="text/css" href="baseCSS.css"/>
 	</head>
 	
 	<body>
-	<div class="screen">
-		<div id="title">Join an Active PvP Game</div>
-		<div id="playerForm">
-			<br />
-			Create your player ID: <input type="text" name="playerName" id ="yourID" />
-			<br />
-			<input type="button" onclick="sendID(document.getElementById('yourID').value)" value="Submit" />
-		</div>
+		<div class="screen">
+			<div id="title">Join an Active PvP Game</div>
+			
+			<div id="playerForm">
+				<br />
+				Create your player ID: <input type="text" name="playerName" id="yourID" />
+				<br />
+				<input type="button" onclick="sendID(document.getElementById('yourID').value)" value="Submit" />
+			</div>
 		
-		<div id="errorText">
-		</div>
+			<div id="errorText">
+			</div>
 		
-		<div id="table">
-		</div>	
-	</div>
+			<div id="table">
+			</div>	
+		</div>
 	</body>
 </html>

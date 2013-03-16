@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Battleship Match</title>
-	<script type="text/javascript" src="baseMethods.js"></script>
-  <link rel="stylesheet" type="text/css" href="baseCSS.css"/>
-  </head>
-  <body onload="fix()">
+	<head>
+		<title>Battleship Match</title>
+		<script type="text/javascript" src="baseMethods.js"></script>
+		<link rel="stylesheet" type="text/css" href="baseCSS.css" />
+	</head>
+  
+	<body onload="fix()">
 	<div class="screen">
 	<div id="turnIndicator">Your Turn</div>
 	<div id="playerShips">
@@ -156,6 +157,7 @@
 			</tr>
 		</table>
 	</div>
+	
 	<div id="enemyShips">
 		<h1>Enemy Waters</h1>
 		<table id="enemyGrid">
@@ -304,9 +306,11 @@
 			</tr>
 		</table>
 	</div>
+	
 	<div id="quit">
-	<button id="forfeit" onclick="forfeit()" type="button">Forfeit</button>
+		<button id="forfeit" onclick="forfeit()" type="button">Forfeit</button>
 	</div>
+	
 	<div id="audio"></div>
 	</div>
 	<script>
@@ -325,5 +329,5 @@
 			return "Leaving or reloading this page in any way will cause you to lose the game.";
 		}
 	</script>
-  </body>
+	</body>
 </html>

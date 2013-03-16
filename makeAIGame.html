@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
+	<head>
 		<title>Play Against A Bot</title>
 		<script type="text/javascript" src="baseMethods.js"></script>
 		<link rel="stylesheet" type="text/css" href="baseCSS.css"/>
 	</head>
 
 	<body>
-	<div class="screen">
-		<div id="title">Battle With a Bot</div>
-		<div id="playerForm">
-			<br />
-			Create your player ID: <input type="text" name="playerName" id="yourID" />
-			<br />
-			<input type="button" onclick="sendID_AI(document.getElementById('yourID').value)" value="Submit" />
-		</div>
+		<div class="screen">
+			<div id="title">Battle With a Bot</div>
+			
+			<div id="playerForm">
+				<br />
+				Create your player ID: <input type="text" name="playerName" id="yourID" />
+				<br />
+				<input type="button" onclick="sendID_AI(document.getElementById('yourID').value)" value="Submit" />
+			</div>
 		
-		<div id="bots">
+			<div id="bots"></div>
 		</div>
-	</div>
 	</body>
 </html>

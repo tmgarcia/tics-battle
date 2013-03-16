@@ -10,6 +10,11 @@ function resetWins(){
 	location.reload();
 }
 
+function resetLosses(){
+	localStorage.playerLosses = 0;
+	location.reload();
+}
+
 /*---------Create Game Methods----------*/
 function createPVPGame(name)
 {

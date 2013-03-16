@@ -7,33 +7,38 @@
 	</head>
 	
 	<body>
-	<div class="screen">
-		<div id="title2"><img src="BattleTitle.jpg" alt="Welcome to BattleShip"></div>
-		<div id="choices">
-		<button id="createGameB" type="button" onclick="showOptions()"></button>
+		<div class="screen">
+			<div id="title2"><img src="BattleTitle.jpg" alt="Welcome to BattleShip"></div>
+			<div id="choices">
+				<button id="createGameB" type="button" onclick="showOptions()"></button>
+				<div id="createOptions"></div>
+				<button id="joinGameB" type="button" onclick="joinGame()"></button>
+			</div>
 		
-		<div id="createOptions"></div>
-			
-		<button id="joinGameB" type="button" onclick="joinGame()"></button>
+			<div id="winscore">Total Wins:<br /> None yet. Get playing!</div>
+			<div id="lossscore">Total Losses:<br /> None? Psh. Yet.</div>
+			<div id="audio"></div>
 		</div>
-		<div id="winscore">Total Wins:<br /> None yet. Get playing!</div>
-		<div id="lossscore">Total Losses:<br /> None? Psh. Yet.</div>
-		<div id="audio"></div>
-	</div>
+		
 		<script>
-			window.onload = function(){
-				document.getElementById("audio").innerHTML= "<embed src='theme.mp3' hidden='true' autostart='true' />";
-				if(localStorage.playerWins && localStorage.playerWins !=0){
-					document.getElementById("winscore").innerHTML="Total Wins: " + localStorage.playerWins + "<br /><button id= 'reset' onclick='resetWins()' >Reset</button>";
+			window.onload = function()
+			{
+				document.getElementById("audio").innerHTML="<embed src='theme.mp3' hidden='true' autostart='true' />";
+				
+				if(localStorage.playerWins && localStorage.playerWins!=0)
+				{
+					document.getElementById("winscore").innerHTML="Total Wins: " + localStorage.playerWins + "<br /><button id='reset' onclick='resetWins()'>Reset</button>";
 				}
-				if(localStorage.playerLosses){
-					document.getElementById("lossscore").innerHTML="Total Losses: " + localStorage.playerLosses;
+				
+				if(localStorage.playerLosses && localStorage.playerLosses!=0)
+				{
+					document.getElementById("lossscore").innerHTML="Total Losses: " + localStorage.playerLosses  + "<br /><button id='reset' onclick='resetLosses()'>Reset</button>";
 				}
 			}
 			
 			function showOptions()
 			{
-				var links="<button id= \"pvpGameB\" onclick=\"document.location.href = 'createPVP.html'\" ></button><button id= \"aiGameB\" onclick=\"document.location.href = 'makeAIGame.html'\" ></button>";
+				var links="<button id=\"pvpGameB\" onclick=\"document.location.href='createPVP.html'\"></button><button id=\"aiGameB\" onclick=\"document.location.href='makeAIGame.html'\"></button>";
 				document.getElementById("createOptions").innerHTML=links;
 			}
 		

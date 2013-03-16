@@ -35,7 +35,6 @@
 }
 
 #createGameB{
-
 	margin-left:0em;
 	margin-right:0em;
 	width:250px;
@@ -58,6 +57,7 @@
 #createOptions{
 	text-align:center;
 }
+
 #pvpGameB{
 	display:block;
 	width:200px;
@@ -146,7 +146,7 @@ background-image:url('forfeitscreenback.jpg');
 background-repeat:no-repeat; 
 background-position:50% 0%; 
 margin-top:50px; 
-text-align:center;"
+text-align:center;
 }
 
 #forfeitscreen button{
@@ -158,7 +158,7 @@ background-image:url('forfeitwinscreenback.jpg');
 background-repeat:no-repeat; 
 background-position:50% 0%; 
 margin-top:50px; 
-text-align:center;"
+text-align:center;
 }
 
 #forfeitwinscreen button{
@@ -189,7 +189,7 @@ margin-top:750px;
 	margin-top:750px;
 }
 
-/*Code for Placing ships*/
+/* Code for Placing ships */
 #displayConfirm{
 	text-align:center;
 	font-size:20px;
@@ -225,10 +225,12 @@ margin-top:750px;
 	float: left;
 	background-image:url('dirup.jpg');
 }
+
 #right{
 	float:left;
 	background-image:url('dirright.jpg');
 }
+
 #down{
 	margin-left:100px;
 	background-image:url('dirdown.jpg');
@@ -238,10 +240,10 @@ margin-top:750px;
 	width:50px;
 	height:50px;
 	background-color:#00F;
-	transition: background-color 2s;
-	-moz-transition: background-color 2s; /* Firefox 4 */
-	-webkit-transition: background-color 2s; /* Safari and Chrome */
-	-o-transition: background-color 2s; /* Opera */
+	transition:background-color 2s;
+	-moz-transition:background-color 2s;/* Firefox 4 */
+	-webkit-transition:background-color 2s;/* Safari and Chrome */
+	-o-transition:background-color 2s;/* Opera */
 }
 
 .selectCell:hover{
@@ -256,11 +258,11 @@ margin-top:750px;
 #innertext{
 	font-weight:bold;
 	font-size:15px;
-	transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
 }
 
 #unsetCarrier{
@@ -271,6 +273,7 @@ margin-top:750px;
 	height:250px;
 	margin-bottom:20px;
 }
+
 #unsetBattleship{
 	background-color:yellow;
 	width:50px;
@@ -278,6 +281,7 @@ margin-top:750px;
 	float:left;
 	clear:right;
 }
+
 #unsetSubmarine{
 	background-color:purple;
 	width:50px;
@@ -287,6 +291,7 @@ margin-top:750px;
 	padding:0;
 	margin-right:20px;
 }
+
 #unsetCruiser{
 	clear:left;
 	float:left;
@@ -295,6 +300,7 @@ margin-top:750px;
 	height:150px;
 	margin-right:20px;
 }
+
 #unsetPatrolBoat{
 	background-color:green;
 	width:50px;
@@ -303,9 +309,7 @@ margin-top:750px;
 	clear:both;
 }
 
-
-/*Code for Game play */
-
+/* Code for Game play */
 #turnIndicator{
 	text-align:center;
 	font-size:50px;
@@ -335,17 +339,16 @@ margin-top:750px;
 	text-align:center;
 }
 
-
 .fireButton{
 	width:50px;
 	height:50px;
 	background-color:blue;
-	background-image: none;
+	background-image:none;
 	background-position:center;
-	transition: background-image 4s;
-	-moz-transition: background-image 4s; /* Firefox 4 */
-	-webkit-transition: background-image 2s; /* Safari and Chrome */
-	-o-transition: background-image 2s; /* Opera */
+	transition:background-image 4s;
+	-moz-transition:background-image 4s;/* Firefox 4 */
+	-webkit-transition:background-image 2s;/* Safari and Chrome */
+	-o-transition:background-image 2s;/* Opera */
 }
 
 .fireButton:hover{
@@ -357,34 +360,40 @@ margin-top:750px;
 	height:50px;
 	background-color:#EEE;
 }
-/* Can each also be used when player's ships are hit*/
+
+/* Can each also be used when player's ships are hit */
 .fireButtonHit{
 	width:50px;
 	height:50px;
 	background-color:red;
 }
-/* Can each also be used when player's ships are hit*/
+
+/* Can each also be used when player's ships are hit */
 .fireButtonDead{
 	width:50px;
 	height:50px;
-	background-image: url('dead.jpg');
+	background-image:url('dead.jpg');
 	background-repeat:no-repeat;
 	background-position:center top;
 }
 
-/*Player's grid's tds would have class name = these according to where they placed their ships*/
+/* Player's grid's tds would have class name = these according to where they placed their ships */
 .carrier{
 	background-color:orange;
 }
+
 .battleship{
 	background-color:yellow;
 }
+
 .submarine{
 	background-color:purple;
 }
+
 .cruiser{
 	background-color:pink;
 }
+
 .patrolBoat{
 	background-color:green;
 }
