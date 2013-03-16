@@ -196,10 +196,10 @@ function update(){
 		window.onbeforeunload = function(){};
 		window.onunload = function(){};
 		if(xmlhttp.responseText.indexOf("<winner>" + sessionStorage.getItem("playersID") +"</winner>")!=-1){
-			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><embed src='themeforfwin.mp3' hidden='true' autostart='true' /><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'forfeitwinscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button><embed src='themeforfwin.mp3' hidden='true' autostart='true' /></div>";
 		}
 		else{
-			document.body.innerHTML = "<div id = 'forfeitscreen' ><embed src='themeforf.mp3' hidden='true' autostart='true' /><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+			document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button><embed src='themeforf.mp3' hidden='true' autostart='true' /></div>";
 		}
 	}
 	if(xmlhttp.responseText.indexOf("<state>Finished</state>")!=-1){
@@ -301,7 +301,7 @@ function forfeit2(){
 	
 	window.onbeforeunload = function(){};
 	window.onunload = function(){};
-	document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button></div>";
+	document.body.innerHTML = "<div id = 'forfeitscreen' ><button id='playAgain' type='button' onclick='backToStart()'>Play again?</button><embed src='themeforf.mp3' hidden='true' autostart='true' /></div>";
 }
 
 function resetShips(){
