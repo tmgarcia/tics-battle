@@ -1,200 +1,222 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<title>Place Your Battleships</title>
-	<link rel="stylesheet" type="text/css" href="baseCSS.css"/>
-	<script type="text/javascript" src="baseMethods.js"></script>
-  </head>
-  <body>
-  <div class="screen">
-	<div id="title">Place your Ships</div>
-	<div id="displayConfirm"></div>
-	<br />
-	<br />
-	<div id="ships">
-		<h3>1. Select Ship</h3>
-		<button id ="unsetSubmarine" type="button" onclick="selectShip('Submarine')"><p id="innertext">Submarine</p></button>
-		<button id ="unsetCarrier" type="button" onclick="selectShip('Carrier')"><p id="innertext">Carrier</p></button>
-		<button id ="unsetCruiser" type="button" onclick="selectShip('Cruiser')"><p id="innertext">Cruiser</p></button>
-		<button id ="unsetBattleship" type="button" onclick="selectShip('Battleship')"><p id="innertext">Battleship</p></button>
-		<button id ="unsetPatrolBoat" type="button" onclick="selectShip('PatrolBoat')"><p id="innertext">Patrol Boat</p></button>
-	</div>
-	<div id="playerGrid">
-		<h3>2. Select starting cell for ship position</h3>
-		<table id="emptyGrid">
-			<tr>
-				<th></th>
-				<th>A</th>
-				<th>B</th>
-				<th>C</th>
-				<th>D</th>
-				<th>E</th>
-				<th>F</th>
-				<th>G</th>
-				<th>H</th>
-				<th>I</th>
-				<th>J</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td><button id="A1" class ="selectCell" type="button" onclick="setStart('A1')"> </button></td>
-				<td><button id="B1" class ="selectCell" type="button" onclick="setStart('B1')"> </button></td>
-				<td><button id="C1" class ="selectCell" type="button" onclick="setStart('C1')"> </button></td>
-				<td><button id="D1" class ="selectCell" type="button" onclick="setStart('D1')"> </button></td>
-				<td><button id="E1" class ="selectCell" type="button" onclick="setStart('E1')"> </button></td>
-				<td><button id="F1" class ="selectCell" type="button" onclick="setStart('F1')"> </button></td>
-				<td><button id="G1" class ="selectCell" type="button" onclick="setStart('G1')"> </button></td>
-				<td><button id="H1" class ="selectCell" type="button" onclick="setStart('H1')"> </button></td>
-				<td><button id="I1" class ="selectCell" type="button" onclick="setStart('I1')"> </button></td>
-				<td><button id="J1" class ="selectCell" type="button" onclick="setStart('J1')"> </button></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td><button id="A2" class ="selectCell" type="button" onclick="setStart('A2')"> </button></td>
-				<td><button id="B2" class ="selectCell" type="button" onclick="setStart('B2')"> </button></td>
-				<td><button id="C2" class ="selectCell" type="button" onclick="setStart('C2')"> </button></td>
-				<td><button id="D2" class ="selectCell" type="button" onclick="setStart('D2')"> </button></td>
-				<td><button id="E2" class ="selectCell" type="button" onclick="setStart('E2')"> </button></td>
-				<td><button id="F2" class ="selectCell" type="button" onclick="setStart('F2')"> </button></td>
-				<td><button id="G2" class ="selectCell" type="button" onclick="setStart('G2')"> </button></td>
-				<td><button id="H2" class ="selectCell" type="button" onclick="setStart('H2')"> </button></td>
-				<td><button id="I2" class ="selectCell" type="button" onclick="setStart('I2')"> </button></td>
-				<td><button id="J2" class ="selectCell" type="button" onclick="setStart('J2')"> </button></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td><button id="A3" class ="selectCell" type="button" onclick="setStart('A3')"> </button></td>
-				<td><button id="B3" class ="selectCell" type="button" onclick="setStart('B3')"> </button></td>
-				<td><button id="C3" class ="selectCell" type="button" onclick="setStart('C3')"> </button></td>
-				<td><button id="D3" class ="selectCell" type="button" onclick="setStart('D3')"> </button></td>
-				<td><button id="E3" class ="selectCell" type="button" onclick="setStart('E3')"> </button></td>
-				<td><button id="F3" class ="selectCell" type="button" onclick="setStart('F3')"> </button></td>
-				<td><button id="G3" class ="selectCell" type="button" onclick="setStart('G3')"> </button></td>
-				<td><button id="H3" class ="selectCell" type="button" onclick="setStart('H3')"> </button></td>
-				<td><button id="I3" class ="selectCell" type="button" onclick="setStart('I3')"> </button></td>
-				<td><button id="J3" class ="selectCell" type="button" onclick="setStart('J3')"> </button></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td><button id="A4" class ="selectCell" type="button" onclick="setStart('A4')"> </button></td>
-				<td><button id="B4" class ="selectCell" type="button" onclick="setStart('B4')"> </button></td>
-				<td><button id="C4" class ="selectCell" type="button" onclick="setStart('C4')"> </button></td>
-				<td><button id="D4" class ="selectCell" type="button" onclick="setStart('D4')"> </button></td>
-				<td><button id="E4" class ="selectCell" type="button" onclick="setStart('E4')"> </button></td>
-				<td><button id="F4" class ="selectCell" type="button" onclick="setStart('F4')"> </button></td>
-				<td><button id="G4" class ="selectCell" type="button" onclick="setStart('G4')"> </button></td>
-				<td><button id="H4" class ="selectCell" type="button" onclick="setStart('H4')"> </button></td>
-				<td><button id="I4" class ="selectCell" type="button" onclick="setStart('I4')"> </button></td>
-				<td><button id="J4" class ="selectCell" type="button" onclick="setStart('J4')"> </button></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td><button id="A5" class ="selectCell" type="button" onclick="setStart('A5')"> </button></td>
-				<td><button id="B5" class ="selectCell" type="button" onclick="setStart('B5')"> </button></td>
-				<td><button id="C5" class ="selectCell" type="button" onclick="setStart('C5')"> </button></td>
-				<td><button id="D5" class ="selectCell" type="button" onclick="setStart('D5')"> </button></td>
-				<td><button id="E5" class ="selectCell" type="button" onclick="setStart('E5')"> </button></td>
-				<td><button id="F5" class ="selectCell" type="button" onclick="setStart('F5')"> </button></td>
-				<td><button id="G5" class ="selectCell" type="button" onclick="setStart('G5')"> </button></td>
-				<td><button id="H5" class ="selectCell" type="button" onclick="setStart('H5')"> </button></td>
-				<td><button id="I5" class ="selectCell" type="button" onclick="setStart('I5')"> </button></td>
-				<td><button id="J5" class ="selectCell" type="button" onclick="setStart('J5')"> </button></td>
-			</tr>
-			<tr>
-				<td>6</td>
-				<td><button id="A6" class ="selectCell" type="button" onclick="setStart('A6')"> </button></td>
-				<td><button id="B6" class ="selectCell" type="button" onclick="setStart('B6')"> </button></td>
-				<td><button id="C6" class ="selectCell" type="button" onclick="setStart('C6')"> </button></td>
-				<td><button id="D6" class ="selectCell" type="button" onclick="setStart('D6')"> </button></td>
-				<td><button id="E6" class ="selectCell" type="button" onclick="setStart('E6')"> </button></td>
-				<td><button id="F6" class ="selectCell" type="button" onclick="setStart('F6')"> </button></td>
-				<td><button id="G6" class ="selectCell" type="button" onclick="setStart('G6')"> </button></td>
-				<td><button id="H6" class ="selectCell" type="button" onclick="setStart('H6')"> </button></td>
-				<td><button id="I6" class ="selectCell" type="button" onclick="setStart('I6')"> </button></td>
-				<td><button id="J6" class ="selectCell" type="button" onclick="setStart('J6')"> </button></td>
-			</tr>
-			<tr>
-				<td>7</td>
-				<td><button id="A7" class ="selectCell" type="button" onclick="setStart('A7')"> </button></td>
-				<td><button id="B7" class ="selectCell" type="button" onclick="setStart('B7')"> </button></td>
-				<td><button id="C7" class ="selectCell" type="button" onclick="setStart('C7')"> </button></td>
-				<td><button id="D7" class ="selectCell" type="button" onclick="setStart('D7')"> </button></td>
-				<td><button id="E7" class ="selectCell" type="button" onclick="setStart('E7')"> </button></td>
-				<td><button id="F7" class ="selectCell" type="button" onclick="setStart('F7')"> </button></td>
-				<td><button id="G7" class ="selectCell" type="button" onclick="setStart('G7')"> </button></td>
-				<td><button id="H7" class ="selectCell" type="button" onclick="setStart('H7')"> </button></td>
-				<td><button id="I7" class ="selectCell" type="button" onclick="setStart('I7')"> </button></td>
-				<td><button id="J7" class ="selectCell" type="button" onclick="setStart('J7')"> </button></td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td><button id="A8" class ="selectCell" type="button" onclick="setStart('A8')"> </button></td>
-				<td><button id="B8" class ="selectCell" type="button" onclick="setStart('B8')"> </button></td>
-				<td><button id="C8" class ="selectCell" type="button" onclick="setStart('C8')"></button></td>
-				<td><button id="D8" class ="selectCell" type="button" onclick="setStart('D8')"></button></td>
-				<td><button id="E8" class ="selectCell" type="button" onclick="setStart('E8')"></button></td>
-				<td><button id="F8" class ="selectCell" type="button" onclick="setStart('F8')"></button></td>
-				<td><button id="G8" class ="selectCell" type="button" onclick="setStart('G8')"></button></td>
-				<td><button id="H8" class ="selectCell" type="button" onclick="setStart('H8')"></button></td>
-				<td><button id="I8" class ="selectCell" type="button" onclick="setStart('I8')"></button></td>
-				<td><button id="J8" class ="selectCell" type="button" onclick="setStart('J8')"></button></td>
-			</tr>
-			<tr>
-				<td>9</td>
-				<td><button id="A9" class ="selectCell" type="button" onclick="setStart('A9')"> </button></td>
-				<td><button id="B9" class ="selectCell" type="button" onclick="setStart('B9')"> </button></td>
-				<td><button id="C9" class ="selectCell" type="button" onclick="setStart('C9')"></button></td>
-				<td><button id="D9" class ="selectCell" type="button" onclick="setStart('D9')"></button></td>
-				<td><button id="E9" class ="selectCell" type="button" onclick="setStart('E9')"></button></td>
-				<td><button id="F9" class ="selectCell" type="button" onclick="setStart('F9')"></button></td>
-				<td><button id="G9" class ="selectCell" type="button" onclick="setStart('G9')"></button></td>
-				<td><button id="H9" class ="selectCell" type="button" onclick="setStart('H9')"></button></td>
-				<td><button id="I9" class ="selectCell" type="button" onclick="setStart('I9')"></button></td>
-				<td><button id="J9" class ="selectCell" type="button" onclick="setStart('J9')"></button></td>
-			</tr>
-			<tr>
-				<td>10</td>
-				<td><button id="A10" class ="selectCell" type="button" onclick="setStart('A10')"> </button></td>
-				<td><button id="B10" class ="selectCell" type="button" onclick="setStart('B10')"> </button></td>
-				<td><button id="C10" class ="selectCell" type="button" onclick="setStart('C10')"></button></td>
-				<td><button id="D10" class ="selectCell" type="button" onclick="setStart('D10')"></button></td>
-				<td><button id="E10" class ="selectCell" type="button" onclick="setStart('E10')"></button></td>
-				<td><button id="F10" class ="selectCell" type="button" onclick="setStart('F10')"></button></td>
-				<td><button id="G10" class ="selectCell" type="button" onclick="setStart('G10')"></button></td>
-				<td><button id="H10" class ="selectCell" type="button" onclick="setStart('H10')"></button></td>
-				<td><button id="I10" class ="selectCell" type="button" onclick="setStart('I10')"></button></td>
-				<td><button id="J10" class ="selectCell" type="button" onclick="setStart('J10')"></button></td>
-			</tr>
-		</table>
-	</div>
+	<head>
+		<title>Place Your Battleships</title>
+		<link rel="stylesheet" type="text/css" href="baseCSS.css" />
+		<script type="text/javascript" src="baseMethods.js"></script>
+	</head>
+  
+	<body>
+		<div class="screen">
+			<div id="title">Place your Ships</div>
+			
+			<div id="displayConfirm"></div>		
+			<br />
+			<br />
+			<div id="ships">
+				<h3>1. Select Ship</h3>
+				<button id ="unsetSubmarine" type="button" onclick="selectShip('Submarine')"><p id="innertext">Submarine</p></button>
+				<button id ="unsetCarrier" type="button" onclick="selectShip('Carrier')"><p id="innertext">Carrier</p></button>
+				<button id ="unsetCruiser" type="button" onclick="selectShip('Cruiser')"><p id="innertext">Cruiser</p></button>
+				<button id ="unsetBattleship" type="button" onclick="selectShip('Battleship')"><p id="innertext">Battleship</p></button>
+				<button id ="unsetPatrolBoat" type="button" onclick="selectShip('PatrolBoat')"><p id="innertext">Patrol Boat</p></button>
+			</div>
+	
+			<div id="playerGrid">
+				<h3>2. Select starting cell for ship position</h3>
+				
+				<table id="emptyGrid">
+					<tr>
+						<th></th>
+						<th>A</th>
+						<th>B</th>
+						<th>C</th>
+						<th>D</th>
+						<th>E</th>
+						<th>F</th>
+						<th>G</th>
+						<th>H</th>
+						<th>I</th>
+						<th>J</th>
+					</tr>
+					
+					<tr>
+						<td>1</td>
+						<td><button id="A1" class ="selectCell" type="button" onclick="setStart('A1')"> </button></td>
+						<td><button id="B1" class ="selectCell" type="button" onclick="setStart('B1')"> </button></td>
+						<td><button id="C1" class ="selectCell" type="button" onclick="setStart('C1')"> </button></td>
+						<td><button id="D1" class ="selectCell" type="button" onclick="setStart('D1')"> </button></td>
+						<td><button id="E1" class ="selectCell" type="button" onclick="setStart('E1')"> </button></td>
+						<td><button id="F1" class ="selectCell" type="button" onclick="setStart('F1')"> </button></td>
+						<td><button id="G1" class ="selectCell" type="button" onclick="setStart('G1')"> </button></td>
+						<td><button id="H1" class ="selectCell" type="button" onclick="setStart('H1')"> </button></td>
+						<td><button id="I1" class ="selectCell" type="button" onclick="setStart('I1')"> </button></td>
+						<td><button id="J1" class ="selectCell" type="button" onclick="setStart('J1')"> </button></td>
+					</tr>
+					
+					<tr>
+						<td>2</td>
+						<td><button id="A2" class ="selectCell" type="button" onclick="setStart('A2')"> </button></td>
+						<td><button id="B2" class ="selectCell" type="button" onclick="setStart('B2')"> </button></td>
+						<td><button id="C2" class ="selectCell" type="button" onclick="setStart('C2')"> </button></td>
+						<td><button id="D2" class ="selectCell" type="button" onclick="setStart('D2')"> </button></td>
+						<td><button id="E2" class ="selectCell" type="button" onclick="setStart('E2')"> </button></td>
+						<td><button id="F2" class ="selectCell" type="button" onclick="setStart('F2')"> </button></td>
+						<td><button id="G2" class ="selectCell" type="button" onclick="setStart('G2')"> </button></td>
+						<td><button id="H2" class ="selectCell" type="button" onclick="setStart('H2')"> </button></td>
+						<td><button id="I2" class ="selectCell" type="button" onclick="setStart('I2')"> </button></td>
+						<td><button id="J2" class ="selectCell" type="button" onclick="setStart('J2')"> </button></td>
+					</tr>
+					
+					<tr>
+						<td>3</td>
+						<td><button id="A3" class ="selectCell" type="button" onclick="setStart('A3')"> </button></td>
+						<td><button id="B3" class ="selectCell" type="button" onclick="setStart('B3')"> </button></td>
+						<td><button id="C3" class ="selectCell" type="button" onclick="setStart('C3')"> </button></td>
+						<td><button id="D3" class ="selectCell" type="button" onclick="setStart('D3')"> </button></td>
+						<td><button id="E3" class ="selectCell" type="button" onclick="setStart('E3')"> </button></td>
+						<td><button id="F3" class ="selectCell" type="button" onclick="setStart('F3')"> </button></td>
+						<td><button id="G3" class ="selectCell" type="button" onclick="setStart('G3')"> </button></td>
+						<td><button id="H3" class ="selectCell" type="button" onclick="setStart('H3')"> </button></td>
+						<td><button id="I3" class ="selectCell" type="button" onclick="setStart('I3')"> </button></td>
+						<td><button id="J3" class ="selectCell" type="button" onclick="setStart('J3')"> </button></td>
+					</tr>
+					
+					<tr>
+						<td>4</td>
+						<td><button id="A4" class ="selectCell" type="button" onclick="setStart('A4')"> </button></td>
+						<td><button id="B4" class ="selectCell" type="button" onclick="setStart('B4')"> </button></td>
+						<td><button id="C4" class ="selectCell" type="button" onclick="setStart('C4')"> </button></td>
+						<td><button id="D4" class ="selectCell" type="button" onclick="setStart('D4')"> </button></td>
+						<td><button id="E4" class ="selectCell" type="button" onclick="setStart('E4')"> </button></td>
+						<td><button id="F4" class ="selectCell" type="button" onclick="setStart('F4')"> </button></td>
+						<td><button id="G4" class ="selectCell" type="button" onclick="setStart('G4')"> </button></td>
+						<td><button id="H4" class ="selectCell" type="button" onclick="setStart('H4')"> </button></td>
+						<td><button id="I4" class ="selectCell" type="button" onclick="setStart('I4')"> </button></td>
+						<td><button id="J4" class ="selectCell" type="button" onclick="setStart('J4')"> </button></td>
+					</tr>
+					
+					<tr>
+						<td>5</td>
+						<td><button id="A5" class ="selectCell" type="button" onclick="setStart('A5')"> </button></td>
+						<td><button id="B5" class ="selectCell" type="button" onclick="setStart('B5')"> </button></td>
+						<td><button id="C5" class ="selectCell" type="button" onclick="setStart('C5')"> </button></td>
+						<td><button id="D5" class ="selectCell" type="button" onclick="setStart('D5')"> </button></td>
+						<td><button id="E5" class ="selectCell" type="button" onclick="setStart('E5')"> </button></td>
+						<td><button id="F5" class ="selectCell" type="button" onclick="setStart('F5')"> </button></td>
+						<td><button id="G5" class ="selectCell" type="button" onclick="setStart('G5')"> </button></td>
+						<td><button id="H5" class ="selectCell" type="button" onclick="setStart('H5')"> </button></td>
+						<td><button id="I5" class ="selectCell" type="button" onclick="setStart('I5')"> </button></td>
+						<td><button id="J5" class ="selectCell" type="button" onclick="setStart('J5')"> </button></td>
+					</tr>
+					
+					<tr>
+						<td>6</td>
+						<td><button id="A6" class ="selectCell" type="button" onclick="setStart('A6')"> </button></td>
+						<td><button id="B6" class ="selectCell" type="button" onclick="setStart('B6')"> </button></td>
+						<td><button id="C6" class ="selectCell" type="button" onclick="setStart('C6')"> </button></td>
+						<td><button id="D6" class ="selectCell" type="button" onclick="setStart('D6')"> </button></td>
+						<td><button id="E6" class ="selectCell" type="button" onclick="setStart('E6')"> </button></td>
+						<td><button id="F6" class ="selectCell" type="button" onclick="setStart('F6')"> </button></td>
+						<td><button id="G6" class ="selectCell" type="button" onclick="setStart('G6')"> </button></td>
+						<td><button id="H6" class ="selectCell" type="button" onclick="setStart('H6')"> </button></td>
+						<td><button id="I6" class ="selectCell" type="button" onclick="setStart('I6')"> </button></td>
+						<td><button id="J6" class ="selectCell" type="button" onclick="setStart('J6')"> </button></td>
+					</tr>
+					
+					<tr>
+						<td>7</td>
+						<td><button id="A7" class ="selectCell" type="button" onclick="setStart('A7')"> </button></td>
+						<td><button id="B7" class ="selectCell" type="button" onclick="setStart('B7')"> </button></td>
+						<td><button id="C7" class ="selectCell" type="button" onclick="setStart('C7')"> </button></td>
+						<td><button id="D7" class ="selectCell" type="button" onclick="setStart('D7')"> </button></td>
+						<td><button id="E7" class ="selectCell" type="button" onclick="setStart('E7')"> </button></td>
+						<td><button id="F7" class ="selectCell" type="button" onclick="setStart('F7')"> </button></td>
+						<td><button id="G7" class ="selectCell" type="button" onclick="setStart('G7')"> </button></td>
+						<td><button id="H7" class ="selectCell" type="button" onclick="setStart('H7')"> </button></td>
+						<td><button id="I7" class ="selectCell" type="button" onclick="setStart('I7')"> </button></td>
+						<td><button id="J7" class ="selectCell" type="button" onclick="setStart('J7')"> </button></td>
+					</tr>
+					
+					<tr>
+						<td>8</td>
+						<td><button id="A8" class ="selectCell" type="button" onclick="setStart('A8')"> </button></td>
+						<td><button id="B8" class ="selectCell" type="button" onclick="setStart('B8')"> </button></td>
+						<td><button id="C8" class ="selectCell" type="button" onclick="setStart('C8')"></button></td>
+						<td><button id="D8" class ="selectCell" type="button" onclick="setStart('D8')"></button></td>
+						<td><button id="E8" class ="selectCell" type="button" onclick="setStart('E8')"></button></td>
+						<td><button id="F8" class ="selectCell" type="button" onclick="setStart('F8')"></button></td>
+						<td><button id="G8" class ="selectCell" type="button" onclick="setStart('G8')"></button></td>
+						<td><button id="H8" class ="selectCell" type="button" onclick="setStart('H8')"></button></td>
+						<td><button id="I8" class ="selectCell" type="button" onclick="setStart('I8')"></button></td>
+						<td><button id="J8" class ="selectCell" type="button" onclick="setStart('J8')"></button></td>
+					</tr>
+					
+					<tr>
+						<td>9</td>
+						<td><button id="A9" class ="selectCell" type="button" onclick="setStart('A9')"> </button></td>
+						<td><button id="B9" class ="selectCell" type="button" onclick="setStart('B9')"> </button></td>
+						<td><button id="C9" class ="selectCell" type="button" onclick="setStart('C9')"></button></td>
+						<td><button id="D9" class ="selectCell" type="button" onclick="setStart('D9')"></button></td>
+						<td><button id="E9" class ="selectCell" type="button" onclick="setStart('E9')"></button></td>
+						<td><button id="F9" class ="selectCell" type="button" onclick="setStart('F9')"></button></td>
+						<td><button id="G9" class ="selectCell" type="button" onclick="setStart('G9')"></button></td>
+						<td><button id="H9" class ="selectCell" type="button" onclick="setStart('H9')"></button></td>
+						<td><button id="I9" class ="selectCell" type="button" onclick="setStart('I9')"></button></td>
+						<td><button id="J9" class ="selectCell" type="button" onclick="setStart('J9')"></button></td>
+					</tr>
+					
+					<tr>
+						<td>10</td>
+						<td><button id="A10" class ="selectCell" type="button" onclick="setStart('A10')"> </button></td>
+						<td><button id="B10" class ="selectCell" type="button" onclick="setStart('B10')"> </button></td>
+						<td><button id="C10" class ="selectCell" type="button" onclick="setStart('C10')"></button></td>
+						<td><button id="D10" class ="selectCell" type="button" onclick="setStart('D10')"></button></td>
+						<td><button id="E10" class ="selectCell" type="button" onclick="setStart('E10')"></button></td>
+						<td><button id="F10" class ="selectCell" type="button" onclick="setStart('F10')"></button></td>
+						<td><button id="G10" class ="selectCell" type="button" onclick="setStart('G10')"></button></td>
+						<td><button id="H10" class ="selectCell" type="button" onclick="setStart('H10')"></button></td>
+						<td><button id="I10" class ="selectCell" type="button" onclick="setStart('I10')"></button></td>
+						<td><button id="J10" class ="selectCell" type="button" onclick="setStart('J10')"></button></td>
+					</tr>
+				</table>
+			</div>
 
-	<div id="directions">
-		<h3>3. Pick a direction for your ship to go</h3>
-		<button id="left" type="button" onclick ="setDir('LEFT')"></button>
-		<button id="up" type="button" onclick ="setDir('UP')"></button>
-		<button id="right" type="button" onclick ="setDir('RIGHT')"></button><br />
-		<button id="down" type="button" onclick ="setDir('DOWN')"></button>
-	</div>
-	<div id="confirm">
-		<button id="confirmbutton" type="button" onclick="placeShip()" disabled><h4>4. Confirm</h4></button>
-	</div>
-	<div id="quit">
-	<button id="forfeit" onclick="forfeit2()" type="button">Forfeit</button>
-	</div>
-	<div id="audio"></div>
-	</div>
-	<script>
-		window.onload=function(){
-			document.getElementById("audio").innerHTML="<embed src='themeplace.mp3' hidden='true' autostart='true' />";
-		}
-		window.onunload=function()
-		{
-			forfeit2();
-		}
-		window.onbeforeunload = function()
-		{
-			return "Leaving or reloading this page in any way will cause you to lose the game. You haven't even started!";
-		}
-	</script>
-  </body>
+			<div id="directions">
+				<h3>3. Pick a direction for your ship to go</h3>
+				
+				<button id="left" type="button" onclick ="setDir('LEFT')"></button>
+				<button id="up" type="button" onclick ="setDir('UP')"></button>
+				<button id="right" type="button" onclick ="setDir('RIGHT')"></button><br />
+				<button id="down" type="button" onclick ="setDir('DOWN')"></button>
+			</div>
+	
+			<div id="confirm">
+				<button id="confirmbutton" type="button" onclick="placeShip()" disabled><h4>4. Confirm</h4></button>
+			</div>
+			
+			<div id="quit">
+				<button id="forfeit" onclick="forfeit2()" type="button">Forfeit</button>
+			</div>
+			
+			<div id="audio"></div>
+		</div>
+	
+		<script>
+			window.onload=function()
+			{
+				document.getElementById("audio").innerHTML="<embed src='themeplace.mp3' hidden='true' autostart='true' />";
+			}
+			
+			window.onunload=function()
+			{
+				forfeit2();
+			}
+			
+			window.onbeforeunload = function()
+			{
+				return "Leaving or reloading this page in any way will cause you to lose the game. You haven't even started!";
+			}
+		</script>
+	</body>
 </html>

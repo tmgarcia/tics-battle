@@ -1,16 +1,19 @@
 var playerID;
 var gameID;
 
-function backToStart(){
+function backToStart()
+{
 	window.open('WelcomePage.html','_self','','true');
 }
 
-function resetWins(){
+function resetWins()
+{
 	localStorage.playerWins = 0;
 	location.reload();
 }
 
-function resetLosses(){
+function resetLosses()
+{
 	localStorage.playerLosses = 0;
 	location.reload();
 }
@@ -23,37 +26,44 @@ function createPVPGame(name)
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request><playerID>" + name + "</playerID></request>");
 	sessionStorage.setItem("playersID", name);
-	if(xmlhttp.responseText.indexOf("request must include")!= -1){
-			alert("You must input a Player ID");
+	
+	if(xmlhttp.responseText.indexOf("request must include")!= -1)
+	{
+		alert("You must input a Player ID");
 	}
-	else if(xmlhttp.responseText.indexOf("error")!= -1){
-			alert("Something is wrong...");
+	
+	else if(xmlhttp.responseText.indexOf("error")!= -1)
+	{
+		alert("Something is wrong...");
 	}
-	else{
+	
+	else
+	{
 		window.setTimeout(window.open('PlaceShips.html','_self','','true'), 3000);
-		}
+	}
 }
 
 function displayInfo(info, id)
 {
-document.getElementById(id).innerHTML=info;
+	document.getElementById(id).innerHTML=info;
 }
+
 function sendXML(requesttxt, type)
 {
-xmlhttp=new XMLHttpRequest();
-xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/"+ type, false);
-xmlhttp.send(requesttxt);
-return xmlhttp.responseXML;
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.open("POST","http://dickerson.neumont.edu:8080/Battleship/GameRequest/"+ type, false);
+	xmlhttp.send(requesttxt);
+	return xmlhttp.responseXML;
 }
+
 function getXMLValue(xmlDoc, valueName)
 {
-return xmlDoc.getElementsByTagName(valueName)[0].firstChild.nodeValue;
-
+	return xmlDoc.getElementsByTagName(valueName)[0].firstChild.nodeValue;
 }
 
 /*-----------Game Play Methods--------*/
-
-function forfeit(){
+function forfeit()
+{
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Forfeit", false);
 	xmlhttp.withCredentials=true;
@@ -81,75 +91,103 @@ function forfeit(){
 	console.log(xmlhttp.responseText);
 }
 
-function addShips(){
+function addShips()
+{
 	displayShip2("Carrier", sessionStorage.getItem("Carrierd"), sessionStorage.getItem("Carrierc"));
 	displayShip2("Battleship", sessionStorage.getItem("Battleshipd"), sessionStorage.getItem("Battleshipc"));
 	displayShip2("Submarine", sessionStorage.getItem("Submarined"), sessionStorage.getItem("Submarinec"));
 	displayShip2("Cruiser", sessionStorage.getItem("Cruiserd"), sessionStorage.getItem("Cruiserc"));
 	displayShip2("PatrolBoat", sessionStorage.getItem("PatrolBoatd"), sessionStorage.getItem("PatrolBoatc"));
 }
-function displayShip2(ship, dir, cell){
+
+function displayShip2(ship, dir, cell)
+{
 	var numcells;
 	var shipcolor;
 	var coordNum = parseInt(cell.substring(1, cell.length), 10);
 	
-	switch(ship){
+	switch(ship)
+	{
 		case "Carrier":
-			numcells=5;
-			shipcolor= 'orange';
+		numcells=5;
+		shipcolor= 'orange';
 		break;
+		
 		case "Battleship":
-			numcells=4;
-			shipcolor= 'yellow';
+		numcells=4;
+		shipcolor= 'yellow';
 		break;
+		
 		case "Submarine":
-			numcells=3;
-			shipcolor= 'purple';
+		numcells=3;
+		shipcolor='purple';
 		break;
+		
 		case "Cruiser":
-			numcells=3;
-			shipcolor= 'pink';
+		numcells=3;
+		shipcolor= 'pink';
 		break;
+		
 		case "PatrolBoat":
-			numcells=2;
-			shipcolor= 'green';
+		numcells=2;
+		shipcolor= 'green';
 		break;
 	}
-	if(dir=="DOWN"){
-		for(var i = coordNum; i<(coordNum +numcells); i++){
+	
+	if(dir=="DOWN")
+	{
+		for(var i = coordNum; i<(coordNum +numcells); i++)
+		{
 			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
 		}
 	}
-	if(dir=="UP"){
-		for(var i = coordNum; i>(coordNum-numcells); i--){
+	
+	if(dir=="UP")
+	{
+		for(var i = coordNum; i>(coordNum-numcells); i--)
+		{
 			document.getElementById("" + cell[0] + i).style.backgroundColor = shipcolor;
 		}
 	}
-	if(dir=="LEFT"){
-		for(var i = cell[0]; i.charCodeAt()>(cell[0].charCodeAt() - numcells); i = String.fromCharCode(i.charCodeAt() - 1)){
+	
+	if(dir=="LEFT")
+	{
+		for(var i = cell[0]; i.charCodeAt()>(cell[0].charCodeAt() - numcells); i = String.fromCharCode(i.charCodeAt() - 1))
+		{
 			document.getElementById("" + i + coordNum).style.backgroundColor = shipcolor;
 		}
 	}
-	if(dir=="RIGHT"){
-		for(var i = cell[0]; i.charCodeAt()<(cell[0].charCodeAt() + numcells); i = String.fromCharCode(i.charCodeAt() + 1)){
+	
+	if(dir=="RIGHT")
+	{
+		for(var i = cell[0]; i.charCodeAt()<(cell[0].charCodeAt() + numcells); i = String.fromCharCode(i.charCodeAt() + 1))
+		{
 			document.getElementById("" + i + coordNum).style.backgroundColor = shipcolor;
 		}
 	}
 }
-function fire(coordinates) {
+
+function fire(coordinates) 
+{
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Fire", false);
 	xmlhttp.withCredentials=true;
 	xmlhttp.send("<request><coordinates>" + coordinates + "</coordinates></request>");
-	if(xmlhttp.responseText.indexOf("Miss")!= -1){
+	
+	if(xmlhttp.responseText.indexOf("Miss")!= -1)
+	{
 		var tile = document.getElementById(coordinates + "e");
 		tile.className = 'fireButtonMiss';
 	}
-	else if(xmlhttp.responseText.indexOf("Hit")!= -1){
+	
+	else if(xmlhttp.responseText.indexOf("Hit")!= -1)
+	{
 		var tile = document.getElementById(coordinates + "e");
 		tile.className = 'fireButtonHit';
 	}
-	else if(xmlhttp.responseText.indexOf("Sunk")!= -1){
+	
+	else if(xmlhttp.responseText.indexOf("Sunk")!= -1)
+	{
 		var tile = document.getElementById(coordinates + "e");
 		tile.className = 'fireButtonDead';
 	}
@@ -157,11 +195,13 @@ function fire(coordinates) {
 
 var checker;
 
-function autorefresh(){
+function autorefresh()
+{
 	checker = self.setInterval("update()", 2000);
 }
 
-function update(){
+function update()
+{
 	xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "http://dickerson.neumont.edu:8080/Battleship/GameRequest/Update", false);
 	xmlhttp.withCredentials=true;
