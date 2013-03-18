@@ -1,3 +1,27 @@
+#ais{
+	text-align:center;
+	margin-bottom:100px;
+}
+
+#edison{
+	width:276px;
+	height:380px;
+	background-image:url('edison.jpg');
+	background-repeat:no-repeat;
+}
+#geeves{
+	width:276px;
+	height:380px;
+	background-image:url('geeves.jpg');
+	background-repeat:no-repeat;
+}
+#robby{
+	width:276px;
+	height:380px;
+	background-image:url('robby.jpg');
+	background-repeat:no-repeat;
+}
+
 #winscore{
 	margin-left:100px;
 	display:inline;

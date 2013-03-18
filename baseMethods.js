@@ -635,9 +635,9 @@ function sendID_AI(name)
 
 function showBots()
 {
-		z = "<h2><a onclick='startBotGame(&#39;Edison&#39;)'>Play Edison (Hard)</a></h2>";
-		z = z + "<h2><a onclick='startBotGame(&#39;Geeves&#39;)'>Play Geeves (Medium)</a></h2>";
-		z = z + "<h2><a onclick='startBotGame(&#39;Robby&#39;)'>Play Robby (Easy)</a></h2>";
+		z = "<div id='ais'><h1>Choose an Oponent:</h1><button type='button' id='edison' onclick='startBotGame(&#39;Edison&#39;)'></button>";
+		z = z + "<button id='geeves' type='button' onclick='startBotGame(&#39;Geeves&#39;)'></button>";
+		z = z + "<button id='robby' type='button' onclick='startBotGame(&#39;Robby&#39;)'></button></div>";
 		document.getElementById("bots").innerHTML = z;
 }
 
